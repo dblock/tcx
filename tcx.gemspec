@@ -17,6 +17,8 @@ Gem::Specification.new do |s|
   s.homepage = 'http://github.com/dblock/tcx'
   s.licenses = ['MIT']
   s.summary = 'A Garmin Training Center XML (TCX) reader/writer.'
+  s.add_dependency 'hashie'
   s.add_dependency 'nokogiri'
+  s.add_dependency 'ruby-enum'
   s.metadata['rubygems_mfa_required'] = 'true'
 end

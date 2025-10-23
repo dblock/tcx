@@ -1,11 +1,9 @@
-inherit_from: .rubocop_todo.yml
-
 require:
   - rubocop-rake
   - rubocop-rspec
 
 AllCops:
-  TargetRubyVersion: 3.2
+  TargetRubyVersion: 3.0
   NewCops: enable
   Exclude:
     - vendor/**/*
@@ -17,4 +15,19 @@ Metrics:
   Enabled: false
 
 Layout/LineLength:
+  Enabled: false
+
+RSpec/ExampleLength:
+  Enabled: false
+
+RSpec/MultipleExpectations:
+  Enabled: false
+
+RSpec/NestedGroups:
+  Enabled: false
+
+RSpec/MultipleMemoizedHelpers:
+  Enabled: false
+
+RSpec/ContextWording:
   Enabled: false

@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
 module Tcx
-  VERSION = '0.1.0'
+  class Extensions < Base
+  end
 end

@@ -1,0 +1,3 @@
+[submodule "spec/data/tcx-test-files"]
+	path = spec/data/tcx-test-files
+	url = git@github.com:firefly-cpp/tcx-test-files.git
