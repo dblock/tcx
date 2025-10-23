@@ -1,9 +1,23 @@
 # frozen_string_literal: true
 
 module Tcx
-  class WorkoutList
+  class WorkoutList < Base
+    extend Forwardable
+
+    property 'workouts', from: 'Workouts', transform_with: ->(v) { v.map { |el| Workout.parse(el) } }
+
+    def_delegators :workouts, :each, :count
+
     def self.parse(list)
-      list.xpath('xmlns:Workout').map { |el| Workout.parse(el) }
+      WorkoutList.new('Workouts' => list.xpath('xmlns:Workout'))
+    end
+
+    def build(builder)
+      workouts.each do |workout|
+        builder.Workout do |workout_builder|
+          workout.build(workout_builder)
+        end
+      end
     end
   end
 end

@@ -8,6 +8,7 @@ group :development, :test do
   gem 'dotenv'
   gem 'rake'
   gem 'rspec'
+  gem 'rspec-temp_dir'
   gem 'rubocop', '1.81.6'
   gem 'rubocop-rake'
   gem 'rubocop-rspec'

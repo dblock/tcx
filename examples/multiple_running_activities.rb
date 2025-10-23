@@ -5,7 +5,7 @@ require 'tcx'
 path = File.join(File.dirname(__FILE__), '..', 'spec', 'data', 'tcx', 'multiple_running_activities.tcx')
 tcx = Tcx.load_file(path)
 
-puts "- #{File.basename(path)}: #{tcx.author.name}"
+puts "- #{File.basename(tcx.file_path)}: #{tcx.author.name}"
 tcx.activities.each do |activity|
   puts "  - id: #{activity.id}"
   puts "    sport: #{activity.sport}"

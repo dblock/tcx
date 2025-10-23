@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require_relative 'models/base'
-require_relative 'models/value'
 require_relative 'models/abstract_source'
 require_relative 'models/activity'
 require_relative 'models/activity_list'

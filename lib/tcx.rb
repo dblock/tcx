@@ -4,14 +4,18 @@ require 'hashie'
 require 'time'
 require 'ruby-enum'
 require 'nokogiri'
+require 'forwardable'
 
 require_relative 'tcx/version'
 require_relative 'tcx/models'
+require_relative 'tcx/file'
 
 module Tcx
   def self.load_file(path)
-    xml = Nokogiri::XML(File.open(path))
-    xml.root.add_namespace_definition('ns3', 'http://www.garmin.com/xmlschemas/ActivityExtension/v2')
-    Tcx::Database.parse(xml.root)
+    Tcx::File.new(path)
+  end
+
+  def self.load(data)
+    Tcx::Database.load(data)
   end
 end

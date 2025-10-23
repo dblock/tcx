@@ -15,5 +15,9 @@ module Tcx
     property 'tracks', from: 'Track', transform_with: ->(v) { to_array(v).map { |el| Track.parse(el) } }
     property 'notes', from: 'Notes'
     property 'extensions', from: 'Extensions', transform_with: ->(v) { Extensions.parse(v) }
+
+    def self.attributes
+      ['start_time']
+    end
   end
 end

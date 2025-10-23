@@ -7,5 +7,9 @@ module Tcx
     property 'laps', from: 'Lap', transform_with: ->(v) { to_array(v).map { |el| Lap.parse(el) } }
     property 'notes', from: 'Notes'
     property 'creator', from: 'Creator', transform_with: ->(v) { AbstractSource.parse(v) }
+
+    def self.attributes
+      ['sport']
+    end
   end
 end

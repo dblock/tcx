@@ -1,9 +1,11 @@
 # frozen_string_literal: true
 
 module Tcx
-  class Cadence < Value
-    def self.parse(node)
-      Value.parse(node).to_i
-    end
+  class Cadence < Base
+    extend Forwardable
+
+    property 'value', from: 'Value', transform_with: lambda(&:to_i)
+
+    def_delegators :value, :to_i, :==
   end
 end
