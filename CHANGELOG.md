@@ -1,6 +1,6 @@
-### 0.2.0 (Next)
+### 0.2.0 (2025-10-24)
 
-* Your contribution here.
+* Added support for writing TCX files - [@dblock](https://github.com/dblock).
 
 ### 0.1.0 (2025-10-23)
 
