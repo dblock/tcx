@@ -2,8 +2,8 @@
 <TrainingCenterDatabase xmlns="http://www.garmin.com/xmlschemas/TrainingCenterDatabase/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ns2="http://www.garmin.com/xmlschemas/UserProfile/v2" xmlns:ns3="http://www.garmin.com/xmlschemas/ActivityExtension/v2" xmlns:ns4="http://www.garmin.com/xmlschemas/ProfileExtension/v1" xmlns:ns5="http://www.garmin.com/xmlschemas/ActivityGoals/v1" xsi:schemaLocation="http://www.garmin.com/xmlschemas/TrainingCenterDatabase/v2 http://www.garmin.com/xmlschemas/TrainingCenterDatabasev2.xsd">
   <Activities>
     <Activity Sport="Other">
-      <Id>2022-08-26T16:35:13.000Z</Id>
-      <Lap StartTime="2022-08-26T16:35:13.000Z">
+      <Id>2022-08-26T16:35:13Z</Id>
+      <Lap StartTime="2022-08-26T16:35:13Z">
         <TotalTimeSeconds>1530.668</TotalTimeSeconds>
         <DistanceMeters>1500.0</DistanceMeters>
         <MaximumSpeed>2.1559998989105225</MaximumSpeed>
@@ -12,14 +12,14 @@
         <TriggerMethod>Manual</TriggerMethod>
         <Track>
           <Trackpoint>
-            <Time>2022-08-26T16:35:13.000Z</Time>
+            <Time>2022-08-26T16:35:13Z</Time>
             <DistanceMeters>0.0</DistanceMeters>
             <Extensions>
               <ns3:TPX/>
             </Extensions>
           </Trackpoint>
           <Trackpoint>
-            <Time>2022-08-26T16:36:01.000Z</Time>
+            <Time>2022-08-26T16:36:01Z</Time>
             <DistanceMeters>50.0</DistanceMeters>
             <Extensions>
               <ns3:TPX>
@@ -28,7 +28,7 @@
             </Extensions>
           </Trackpoint>
           <Trackpoint>
-            <Time>2022-08-26T16:36:46.000Z</Time>
+            <Time>2022-08-26T16:36:46Z</Time>
             <DistanceMeters>100.0</DistanceMeters>
             <Extensions>
               <ns3:TPX>
@@ -37,7 +37,7 @@
             </Extensions>
           </Trackpoint>
           <Trackpoint>
-            <Time>2022-08-26T16:37:30.000Z</Time>
+            <Time>2022-08-26T16:37:30Z</Time>
             <DistanceMeters>150.0</DistanceMeters>
             <Extensions>
               <ns3:TPX>
@@ -46,7 +46,7 @@
             </Extensions>
           </Trackpoint>
           <Trackpoint>
-            <Time>2022-08-26T16:38:22.000Z</Time>
+            <Time>2022-08-26T16:38:22Z</Time>
             <DistanceMeters>200.0</DistanceMeters>
             <Extensions>
               <ns3:TPX>
@@ -55,7 +55,7 @@
             </Extensions>
           </Trackpoint>
           <Trackpoint>
-            <Time>2022-08-26T16:39:13.000Z</Time>
+            <Time>2022-08-26T16:39:13Z</Time>
             <DistanceMeters>250.0</DistanceMeters>
             <Extensions>
               <ns3:TPX>
@@ -64,7 +64,7 @@
             </Extensions>
           </Trackpoint>
           <Trackpoint>
-            <Time>2022-08-26T16:40:06.000Z</Time>
+            <Time>2022-08-26T16:40:06Z</Time>
             <DistanceMeters>300.0</DistanceMeters>
             <Extensions>
               <ns3:TPX>
@@ -73,7 +73,7 @@
             </Extensions>
           </Trackpoint>
           <Trackpoint>
-            <Time>2022-08-26T16:40:58.000Z</Time>
+            <Time>2022-08-26T16:40:58Z</Time>
             <DistanceMeters>350.0</DistanceMeters>
             <Extensions>
               <ns3:TPX>
@@ -82,7 +82,7 @@
             </Extensions>
           </Trackpoint>
           <Trackpoint>
-            <Time>2022-08-26T16:41:51.000Z</Time>
+            <Time>2022-08-26T16:41:51Z</Time>
             <DistanceMeters>400.0</DistanceMeters>
             <Extensions>
               <ns3:TPX>
@@ -91,7 +91,7 @@
             </Extensions>
           </Trackpoint>
           <Trackpoint>
-            <Time>2022-08-26T16:42:17.000Z</Time>
+            <Time>2022-08-26T16:42:17Z</Time>
             <DistanceMeters>450.0</DistanceMeters>
             <Extensions>
               <ns3:TPX>
@@ -100,7 +100,7 @@
             </Extensions>
           </Trackpoint>
           <Trackpoint>
-            <Time>2022-08-26T16:42:43.000Z</Time>
+            <Time>2022-08-26T16:42:43Z</Time>
             <DistanceMeters>500.0</DistanceMeters>
             <Extensions>
               <ns3:TPX>
@@ -109,7 +109,7 @@
             </Extensions>
           </Trackpoint>
           <Trackpoint>
-            <Time>2022-08-26T16:44:27.000Z</Time>
+            <Time>2022-08-26T16:44:27Z</Time>
             <DistanceMeters>550.0</DistanceMeters>
             <Extensions>
               <ns3:TPX>
@@ -118,7 +118,7 @@
             </Extensions>
           </Trackpoint>
           <Trackpoint>
-            <Time>2022-08-26T16:45:00.000Z</Time>
+            <Time>2022-08-26T16:45:00Z</Time>
             <DistanceMeters>600.0</DistanceMeters>
             <Extensions>
               <ns3:TPX>
@@ -127,7 +127,7 @@
             </Extensions>
           </Trackpoint>
           <Trackpoint>
-            <Time>2022-08-26T16:45:27.000Z</Time>
+            <Time>2022-08-26T16:45:27Z</Time>
             <DistanceMeters>650.0</DistanceMeters>
             <Extensions>
               <ns3:TPX>
@@ -136,7 +136,7 @@
             </Extensions>
           </Trackpoint>
           <Trackpoint>
-            <Time>2022-08-26T16:46:22.000Z</Time>
+            <Time>2022-08-26T16:46:22Z</Time>
             <DistanceMeters>700.0</DistanceMeters>
             <Extensions>
               <ns3:TPX>
@@ -145,7 +145,7 @@
             </Extensions>
           </Trackpoint>
           <Trackpoint>
-            <Time>2022-08-26T16:47:21.000Z</Time>
+            <Time>2022-08-26T16:47:21Z</Time>
             <DistanceMeters>750.0</DistanceMeters>
             <Extensions>
               <ns3:TPX>
@@ -154,7 +154,7 @@
             </Extensions>
           </Trackpoint>
           <Trackpoint>
-            <Time>2022-08-26T16:48:12.000Z</Time>
+            <Time>2022-08-26T16:48:12Z</Time>
             <DistanceMeters>800.0</DistanceMeters>
             <Extensions>
               <ns3:TPX>
@@ -163,7 +163,7 @@
             </Extensions>
           </Trackpoint>
           <Trackpoint>
-            <Time>2022-08-26T16:49:09.000Z</Time>
+            <Time>2022-08-26T16:49:09Z</Time>
             <DistanceMeters>850.0</DistanceMeters>
             <Extensions>
               <ns3:TPX>
@@ -172,7 +172,7 @@
             </Extensions>
           </Trackpoint>
           <Trackpoint>
-            <Time>2022-08-26T16:50:09.000Z</Time>
+            <Time>2022-08-26T16:50:09Z</Time>
             <DistanceMeters>900.0</DistanceMeters>
             <Extensions>
               <ns3:TPX>
@@ -181,7 +181,7 @@
             </Extensions>
           </Trackpoint>
           <Trackpoint>
-            <Time>2022-08-26T16:51:04.000Z</Time>
+            <Time>2022-08-26T16:51:04Z</Time>
             <DistanceMeters>950.0</DistanceMeters>
             <Extensions>
               <ns3:TPX>
@@ -190,7 +190,7 @@
             </Extensions>
           </Trackpoint>
           <Trackpoint>
-            <Time>2022-08-26T16:52:06.000Z</Time>
+            <Time>2022-08-26T16:52:06Z</Time>
             <DistanceMeters>1000.0</DistanceMeters>
             <Extensions>
               <ns3:TPX>
@@ -199,7 +199,7 @@
             </Extensions>
           </Trackpoint>
           <Trackpoint>
-            <Time>2022-08-26T16:53:04.000Z</Time>
+            <Time>2022-08-26T16:53:04Z</Time>
             <DistanceMeters>1050.0</DistanceMeters>
             <Extensions>
               <ns3:TPX>
@@ -208,7 +208,7 @@
             </Extensions>
           </Trackpoint>
           <Trackpoint>
-            <Time>2022-08-26T16:54:01.000Z</Time>
+            <Time>2022-08-26T16:54:01Z</Time>
             <DistanceMeters>1100.0</DistanceMeters>
             <Extensions>
               <ns3:TPX>
@@ -217,7 +217,7 @@
             </Extensions>
           </Trackpoint>
           <Trackpoint>
-            <Time>2022-08-26T16:55:02.000Z</Time>
+            <Time>2022-08-26T16:55:02Z</Time>
             <DistanceMeters>1150.0</DistanceMeters>
             <Extensions>
               <ns3:TPX>
@@ -226,7 +226,7 @@
             </Extensions>
           </Trackpoint>
           <Trackpoint>
-            <Time>2022-08-26T16:55:55.000Z</Time>
+            <Time>2022-08-26T16:55:55Z</Time>
             <DistanceMeters>1200.0</DistanceMeters>
             <Extensions>
               <ns3:TPX>
@@ -235,7 +235,7 @@
             </Extensions>
           </Trackpoint>
           <Trackpoint>
-            <Time>2022-08-26T16:56:55.000Z</Time>
+            <Time>2022-08-26T16:56:55Z</Time>
             <DistanceMeters>1250.0</DistanceMeters>
             <Extensions>
               <ns3:TPX>
@@ -244,7 +244,7 @@
             </Extensions>
           </Trackpoint>
           <Trackpoint>
-            <Time>2022-08-26T16:57:29.000Z</Time>
+            <Time>2022-08-26T16:57:29Z</Time>
             <DistanceMeters>1300.0</DistanceMeters>
             <Extensions>
               <ns3:TPX>
@@ -253,7 +253,7 @@
             </Extensions>
           </Trackpoint>
           <Trackpoint>
-            <Time>2022-08-26T16:57:53.000Z</Time>
+            <Time>2022-08-26T16:57:53Z</Time>
             <DistanceMeters>1350.0</DistanceMeters>
             <Extensions>
               <ns3:TPX>
@@ -262,7 +262,7 @@
             </Extensions>
           </Trackpoint>
           <Trackpoint>
-            <Time>2022-08-26T16:58:47.000Z</Time>
+            <Time>2022-08-26T16:58:47Z</Time>
             <DistanceMeters>1400.0</DistanceMeters>
             <Extensions>
               <ns3:TPX>
@@ -271,7 +271,7 @@
             </Extensions>
           </Trackpoint>
           <Trackpoint>
-            <Time>2022-08-26T16:59:45.000Z</Time>
+            <Time>2022-08-26T16:59:45Z</Time>
             <DistanceMeters>1450.0</DistanceMeters>
             <Extensions>
               <ns3:TPX>
@@ -280,7 +280,7 @@
             </Extensions>
           </Trackpoint>
           <Trackpoint>
-            <Time>2022-08-26T17:00:42.000Z</Time>
+            <Time>2022-08-26T17:00:42Z</Time>
             <DistanceMeters>1500.0</DistanceMeters>
             <Extensions>
               <ns3:TPX>
@@ -289,7 +289,7 @@
             </Extensions>
           </Trackpoint>
           <Trackpoint>
-            <Time>2022-08-26T17:00:44.000Z</Time>
+            <Time>2022-08-26T17:00:44Z</Time>
             <DistanceMeters>1500.0</DistanceMeters>
             <Extensions>
               <ns3:TPX/>

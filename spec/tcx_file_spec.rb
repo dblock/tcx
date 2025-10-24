@@ -86,7 +86,7 @@ describe Tcx::File do
       let(:activity) { tcx.activities.first }
 
       it 'has the correct properties' do
-        expect(activity.id).to eq '2014-12-26T10:00:39.000Z'
+        expect(activity.id).to eq '2014-12-26T10:00:39Z'
         expect(activity.sport).to eq 'Running'
         expect(activity.notes).to be_nil
       end
@@ -171,6 +171,67 @@ describe Tcx::File do
             expect(version.version_minor).to eq 0
             expect(version.build_major).to eq 0
             expect(version.build_minor).to eq 0
+          end
+        end
+      end
+    end
+  end
+
+  context 'with a course' do
+    let(:tcx) { described_class.new(File.join(File.dirname(__FILE__), 'data', 'courses', 'brighton-beach.tcx')) }
+
+    it 'contains a course' do
+      expect(tcx.courses.count).to eq 1
+    end
+
+    context 'the course' do
+      let(:course) { tcx.courses.first }
+
+      it 'has the correct properties' do
+        expect(course.name).to eq 'Brighton Beach'
+        expect(course.laps.count).to eq 1
+        expect(course.tracks.count).to eq 1
+        expect(course.course_points).to be_nil
+        expect(course.notes).to be_nil
+        expect(course.creator).to be_nil
+      end
+
+      context 'first lap' do
+        let(:lap) { course.laps.first }
+
+        it 'is a lap' do
+          expect(lap).to be_a Tcx::CourseLap
+          expect(lap.total_time_seconds).to eq(0.0)
+          expect(lap.distance_meters).to eq(29_320.969880372675)
+          expect(lap.begin_position).to be_a Tcx::Position
+          expect(lap.begin_position.latitude_degrees).to eq(40.75622691)
+          expect(lap.begin_position.longitude_degrees).to eq(-73.9973099)
+          expect(lap.end_position).to be_a Tcx::Position
+          expect(lap.end_position.latitude_degrees).to eq(40.57761895)
+          expect(lap.end_position.longitude_degrees).to eq(-73.9612219)
+          expect(lap.intensity).to eq(Tcx::Intensity.active)
+        end
+      end
+
+      context 'first track' do
+        let(:track) { course.tracks.first }
+
+        it 'is a track' do
+          expect(track).to be_a Tcx::Track
+          expect(track.trackpoints.count).to eq 2402
+        end
+
+        context 'first track point' do
+          let(:trackpoint) { track.trackpoints.first }
+
+          it 'is a trackpoint' do
+            expect(trackpoint).to be_a Tcx::Trackpoint
+            expect(trackpoint.time).to eq Time.parse('2025-10-24T17:59:04Z')
+            expect(trackpoint.position.latitude_degrees).to eq 40.75622691
+            expect(trackpoint.position.longitude_degrees).to eq(-73.9973099)
+            expect(trackpoint.position).to be_a Tcx::Position
+            expect(trackpoint.altitude_meters).to eq 15.0
+            expect(trackpoint.distance_meters).to eq 0.0
           end
         end
       end

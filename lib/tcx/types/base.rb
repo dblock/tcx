@@ -41,6 +41,7 @@ module Tcx
       'http://www.garmin.com/xmlschemas/TrainingCenterDatabase/v2'
     end
 
+    # TODO: dynamically load in file and write only used ones
     def self.namespace_definitions
       {
         'xsi:schemaLocation' => 'http://www.garmin.com/xmlschemas/TrainingCenterDatabase/v2 http://www.garmin.com/xmlschemas/TrainingCenterDatabasev2.xsd',
@@ -102,7 +103,7 @@ module Tcx
     def build_value(value)
       case value
       when Time
-        value.iso8601.gsub('Z', '.000Z')
+        value.iso8601
       else
         value
       end

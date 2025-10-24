@@ -5,5 +5,10 @@ module Tcx
     property 'folders', from: 'Folder', transform_with: ->(v) { to_array(v).map { |el| CourseFolder.parse(el) } }
     property 'course_references', from: 'CourseNameRef', transform_with: ->(v) { to_array(v).map { |el| NameKeyReference.parse(el) } }
     property 'notes', from: 'Notes'
+    property 'name', from: 'Name'
+
+    def self.attributes
+      ['name']
+    end
   end
 end

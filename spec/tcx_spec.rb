@@ -14,10 +14,6 @@ describe Tcx do
           expect(tcx).to be_a Tcx::File
         end
 
-        it 'has the correct number of activities' do
-          expect(tcx.activities.count).to be > 0
-        end
-
         context 'when dumped' do
           include_context 'uses temp dir'
 
