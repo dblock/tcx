@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <xsd:schema xmlns="http://www.garmin.com/xmlschemas/ProfileExtension/v1" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                xmlns:px1="http://www.garmin.com/xmlschemas/ProfileExtension/v1"  targetNamespace="http://www.garmin.com/xmlschemas/ProfileExtension/v1"
+                elementFormDefault="qualified">
+        <xsd:element name="PowerZones" type="ProfilePowerZones_t"/>
+        <xsd:complexType name="ProfilePowerZones_t">
+            <xsd:sequence>
+                <xsd:element name="FTP" type="FTPValue_t" minOccurs="0"/>
+                <xsd:element name="PowerZone" type="ProfilePowerZone_t" minOccurs="7" maxOccurs="7"/>
+            </xsd:sequence>
+        </xsd:complexType>
+        <xsd:simpleType name="PowerZoneNumbers_t">
+            <xsd:restriction base="xsd:positiveInteger">
+                <xsd:maxInclusive value="7"/>
+            </xsd:restriction>
+        </xsd:simpleType>
+	   <xsd:simpleType name="FTPValue_t">
+		       <xsd:restriction base="xsd:unsignedShort">
+			        <xsd:minInclusive value="20"/>
+			        <xsd:maxInclusive value="1000"/>
+		    </xsd:restriction>
+	    </xsd:simpleType>
+        <xsd:complexType name="ProfilePowerZone_t">
+            <xsd:sequence>
+                <xsd:element name="Number" type="PowerZoneNumbers_t"/>
+                <xsd:element name="Low" type="xsd:unsignedShort"/>
+                <xsd:element name="High" type="xsd:unsignedShort"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:schema>

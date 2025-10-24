@@ -3,6 +3,7 @@
 module Tcx
   class Base < Hashie::Trash
     include Hashie::Extensions::IgnoreUndeclared
+    extend Forwardable
 
     def self.parse(xml)
       attributes = xml.attributes.to_h
@@ -31,6 +32,24 @@ module Tcx
       []
     end
 
+    def self.namespace
+      'http://www.garmin.com/xmlschemas/TrainingCenterDatabase/v2'
+    end
+
+    def self.namespace_definitions
+      {
+        'xmlns' => 'http://www.garmin.com/xmlschemas/TrainingCenterDatabase/v2',
+        'xmlns:ns2' => 'http://www.garmin.com/xmlschemas/UserProfile/v2',
+        'xmlns:ns3' => 'http://www.garmin.com/xmlschemas/ActivityExtension/v2',
+        'xmlns:ns4' => 'http://www.garmin.com/xmlschemas/ProfileExtension/v1',
+        'xmlns:ns5' => 'http://www.garmin.com/xmlschemas/ActivityGoals/v1'
+      }
+    end
+
+    def self.xmlns
+      @xmlns ||= namespace_definitions.invert
+    end
+
     def attributes
       attribute_values = {}
       self.class.attributes.each do |attribute|
@@ -51,19 +70,25 @@ module Tcx
         property_name = self.class.inverse_translations.fetch(property, property)
 
         if value.is_a?(Base)
-          builder.send(property_name, value.attributes) do |property_builder|
-            value.build(property_builder)
-          end
+          build_el(builder, property_name, value)
         elsif value.is_a?(Array)
           value.each do |el|
-            attributes = el.attributes if el.is_a?(Base)
-            builder.send(property_name, attributes) do |value_builder|
-              el.build(value_builder)
-            end
+            build_el(builder, property_name, el)
           end
         else
           builder.send(property_name, build_value(value))
         end
+      end
+    end
+
+    def build_el(builder, property_name, el)
+      attributes = el.attributes if el.is_a?(Base)
+      namespace = Base.xmlns[el.class.namespace]&.split(':')&.[](1) if el.is_a?(Base)
+      builder = builder[namespace] if namespace
+
+      builder.send(property_name, attributes) do |property_builder|
+        property_builder = property_builder[namespace] if namespace
+        el.build(property_builder)
       end
     end
 

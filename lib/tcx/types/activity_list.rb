@@ -2,8 +2,6 @@
 
 module Tcx
   class ActivityList < Base
-    extend Forwardable
-
     property 'activities', from: 'Activities', transform_with: ->(v) { v.map { |el| Activity.parse(el) } }
 
     def_delegators :activities, :each, :count

@@ -2,8 +2,6 @@
 
 module Tcx
   class CourseList < Base
-    extend Forwardable
-
     property 'courses', from: 'Courses', transform_with: ->(v) { v.map { |el| Course.parse(el) } }
 
     def_delegators :courses, :each, :to_a

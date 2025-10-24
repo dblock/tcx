@@ -9,7 +9,7 @@ module Tcx
     property 'heart_rate_bpm', from: 'HeartRateBpm', transform_with: ->(v) { HeartRateInBeatsPerMinute.parse(v) }
     property 'cadence', from: 'Cadence', transform_with: ->(v) { Cadence.parse(v) }
     property 'sensor_state', from: 'SensorState', transform_with: ->(v) { SensorState.parse(v) }
-    property 'extensions', from: 'Extensions', transform_with: ->(v) { Extensions.parse(v) }
+    property 'extensions', from: 'Extensions', transform_with: ->(v) { ExtensionsList.parse(v) }
     # TODO: Extensions/TPX/Speed
   end
 end

@@ -14,7 +14,7 @@ module Tcx
     property 'trigger_method', from: 'TriggerMethod', transform_with: ->(v) { TriggerMethod.parse(v) }
     property 'tracks', from: 'Track', transform_with: ->(v) { to_array(v).map { |el| Track.parse(el) } }
     property 'notes', from: 'Notes'
-    property 'extensions', from: 'Extensions', transform_with: ->(v) { Extensions.parse(v) }
+    property 'extensions', from: 'Extensions', transform_with: ->(v) { ExtensionsList.parse(v) }
 
     def self.attributes
       ['start_time']

@@ -107,7 +107,9 @@ describe Tcx::File do
           expect(lap.cadence).to be_nil
           expect(lap.trigger_method).to eq 'Manual'
           expect(lap.notes).to be_nil
-          expect(lap.extensions).to eq({})
+          expect(lap.extensions.keys).to eq(%w[LX])
+          expect(lap.extensions.LX.avg_speed).to eq(4.96999979019165)
+          # TODO: expect(lap.avg_speed).to eq(4.96999979019165)
           expect(lap.tracks.count).to eq 1
         end
 
@@ -130,8 +132,8 @@ describe Tcx::File do
               expect(trackpoint.heart_rate_bpm).to eq 113
               expect(trackpoint.cadence).to be_nil
               expect(trackpoint.sensor_state).to be_nil
-              # TODO: extensions/TPX/Speed
-              expect(trackpoint.extensions).to eq({})
+              expect(trackpoint.extensions.keys).to eq(%w[TPX])
+              expect(trackpoint.extensions.TPX.speed).to eq(0.0)
             end
 
             describe '.position' do

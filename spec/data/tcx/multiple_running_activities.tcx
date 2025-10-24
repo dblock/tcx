@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<TrainingCenterDatabase
-  xsi:schemaLocation="http://www.garmin.com/xmlschemas/TrainingCenterDatabase/v2 http://www.garmin.com/xmlschemas/TrainingCenterDatabasev2.xsd"
-  xmlns:ns5="http://www.garmin.com/xmlschemas/ActivityGoals/v1"
-  xmlns:ns3="http://www.garmin.com/xmlschemas/ActivityExtension/v2"
-  xmlns:ns2="http://www.garmin.com/xmlschemas/UserProfile/v2"
-  xmlns="http://www.garmin.com/xmlschemas/TrainingCenterDatabase/v2"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ns4="http://www.garmin.com/xmlschemas/ProfileExtension/v1">
+<TrainingCenterDatabase xmlns:ns5="http://www.garmin.com/xmlschemas/ActivityGoals/v1" xmlns:ns3="http://www.garmin.com/xmlschemas/ActivityExtension/v2" xmlns:ns2="http://www.garmin.com/xmlschemas/UserProfile/v2" xmlns="http://www.garmin.com/xmlschemas/TrainingCenterDatabase/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ns4="http://www.garmin.com/xmlschemas/ProfileExtension/v1" xsi:schemaLocation="http://www.garmin.com/xmlschemas/TrainingCenterDatabase/v2 http://www.garmin.com/xmlschemas/TrainingCenterDatabasev2.xsd">
   <Activities>
     <Activity Sport="Running">
       <Id>2014-12-26T10:00:39.000Z</Id>
@@ -21642,7 +21636,7 @@
           </ns3:LX>
         </Extensions>
       </Lap>
-      <Creator xsi:type="Device_t">
+      <Creator>
         <Name>Garmin Forerunner 910XT</Name>
         <UnitId>3881644365</UnitId>
         <ProductID>1328</ProductID>
@@ -21654,7 +21648,7 @@
         </Version>
       </Creator>
     </Activity>
-        <Activity Sport="Running">
+    <Activity Sport="Running">
       <Id>2016-07-29T15:00:26.000Z</Id>
       <Lap StartTime="2016-07-29T15:00:26.000Z">
         <TotalTimeSeconds>276.0</TotalTimeSeconds>
