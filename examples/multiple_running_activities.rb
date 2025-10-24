@@ -3,7 +3,7 @@
 require 'tcx'
 require 'tmpdir'
 
-path = File.join(File.dirname(__FILE__), '..', 'spec', 'data', 'tcx', 'multiple_running_activities.tcx')
+path = File.join(File.dirname(__FILE__), '..', 'spec', 'data', 'running', 'multiple_running_activities.tcx')
 puts "Loading #{path}, #{File.size(path)} byte(s)"
 puts
 tcx = Tcx.load_file(path)

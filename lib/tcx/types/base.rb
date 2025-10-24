@@ -69,7 +69,7 @@ module Tcx
       attribute_values
     end
 
-    def build_xml(builder)
+    def build_xml(builder, namespace = nil)
       (self.class.properties - self.class.attributes).each do |property|
         value = self[property]
         next unless value
@@ -83,6 +83,7 @@ module Tcx
             build_el(builder, property_name, el)
           end
         else
+          builder = builder[namespace] if namespace
           builder.send(property_name, build_value(value))
         end
       end
@@ -94,8 +95,7 @@ module Tcx
       builder = builder[namespace] if namespace
 
       builder.send(property_name, attributes) do |property_builder|
-        property_builder = property_builder[namespace] if namespace
-        el.build_xml(property_builder)
+        el.build_xml(property_builder, namespace)
       end
     end
 

@@ -4,7 +4,7 @@ require 'spec_helper'
 
 describe Tcx::File do
   context 'with a file path' do
-    let(:file_path) { File.join(File.dirname(__FILE__), 'data', 'tcx', 'multiple_running_activities.tcx') }
+    let(:file_path) { File.join(File.dirname(__FILE__), 'data', 'running', 'multiple_running_activities.tcx') }
     let(:tcx_file) { described_class.new(file_path) }
 
     describe '#initialize' do
@@ -47,16 +47,21 @@ describe Tcx::File do
         tcx_file.dump(temp_file)
       end
 
-      it 'writes XML output to the specified file' do
-        tcx_file.dump(temp_file)
-        content = File.read(temp_file)
-        expect(content).to include('<?xml version="1.0" encoding="UTF-8"?>')
-        expect(content).to include('TrainingCenterDatabase')
-      end
+      context 'when dumped' do
+        before do
+          tcx_file.dump(temp_file)
+        end
 
-      it 'writes content that matches original file' do
-        tcx_file.dump(temp_file)
-        expect(FileUtils.compare_file(file_path, temp_file)).to be_truthy
+        let(:dumped_xml) { File.read(temp_file) }
+
+        it 'writes XML output to the specified file' do
+          expect(dumped_xml).to include('<?xml version="1.0" encoding="UTF-8"?>')
+          expect(dumped_xml).to include('TrainingCenterDatabase')
+        end
+
+        it 'writes content that matches original file' do
+          expect(File.read(file_path)).to eq dumped_xml
+        end
       end
     end
   end
@@ -71,7 +76,7 @@ describe Tcx::File do
   end
 
   context 'with multiple running activities' do
-    let(:tcx) { described_class.new(File.join(File.dirname(__FILE__), 'data', 'tcx', 'multiple_running_activities.tcx')) }
+    let(:tcx) { described_class.new(File.join(File.dirname(__FILE__), 'data', 'running', 'multiple_running_activities.tcx')) }
 
     it 'has the correct number of activities' do
       expect(tcx.activities.count).to eq 2

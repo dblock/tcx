@@ -17,12 +17,26 @@ describe Tcx do
         it 'has the correct number of activities' do
           expect(tcx.activities.count).to be > 0
         end
+
+        context 'when dumped' do
+          include_context 'uses temp dir'
+
+          let(:temp_file) { File.join(temp_dir, File.basename(tcx_file)) }
+
+          before do
+            tcx.dump(temp_file)
+          end
+
+          it 'writes an identical file' do
+            expect(File.read(tcx_file)).to eq File.read(temp_file)
+          end
+        end
       end
     end
   end
 
   describe '#load' do
-    let(:data) { File.read(File.join(File.dirname(__FILE__), 'data', 'tcx', 'multiple_running_activities.tcx')) }
+    let(:data) { File.read(File.join(File.dirname(__FILE__), 'data', 'running', 'multiple_running_activities.tcx')) }
     let(:tcx) { described_class.load(data) }
 
     it 'returns a database' do

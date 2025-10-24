@@ -13,6 +13,7 @@ group :development, :test do
   gem 'rubocop', '1.81.6'
   gem 'rubocop-rake'
   gem 'rubocop-rspec'
+  gem 'super_diff'
   gem 'vcr'
   gem 'webmock'
 end

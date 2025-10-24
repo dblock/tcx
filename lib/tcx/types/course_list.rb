@@ -10,10 +10,10 @@ module Tcx
       CourseList.new('Courses' => list.xpath('xmlns:Course'))
     end
 
-    def build_xml(builder)
+    def build_xml(builder, namespace = nil)
       courses.each do |course|
         builder.Course do |course_builder|
-          course.build_xml(course_builder)
+          course.build_xml(course_builder, namespace)
         end
       end
     end

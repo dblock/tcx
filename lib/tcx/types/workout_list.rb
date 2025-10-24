@@ -10,10 +10,10 @@ module Tcx
       WorkoutList.new('Workouts' => list.xpath('xmlns:Workout'))
     end
 
-    def build_xml(builder)
+    def build_xml(builder, namespace = nil)
       workouts.each do |workout|
         builder.Workout do |workout_builder|
-          workout.build_xml(workout_builder)
+          workout.build_xml(workout_builder, namespace)
         end
       end
     end
