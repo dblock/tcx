@@ -7,7 +7,7 @@ require 'nokogiri'
 require 'forwardable'
 
 require_relative 'tcx/version'
-require_relative 'tcx/models'
+require_relative 'tcx/types'
 require_relative 'tcx/file'
 
 module Tcx

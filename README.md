@@ -19,7 +19,7 @@ Run `bundle install`.
 
 ### Working with Files
 
-You can read and write TCX files using `Tcx#load_file` and `dump`. See [examples/multiple_running_activities.rb](examples/multiple_running_activities.rb) for a working example.
+Read and write TCX files using `Tcx#load_file` and `dump`. See [examples/multiple_running_activities.rb](examples/multiple_running_activities.rb) for a working example.
 
 ```ruby
 require 'tcx'
@@ -37,7 +37,7 @@ tcx.dump('activities2.tcx') # writes to activities2.tcx
 
 ### Working with XML Data
 
-You can directly manipulate TCX data without creating files.
+Directly manipulate TCX data without creating files.
 
 ```ruby
 data = File.read('activities.tcx') # String
