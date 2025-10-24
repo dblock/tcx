@@ -3,7 +3,7 @@
 [![Gem Version](https://badge.fury.io/rb/tcx.svg)](https://badge.fury.io/rb/tcx)
 [![Test](https://github.com/dblock/tcx/actions/workflows/test.yml/badge.svg?branch=master)](https://github.com/dblock/tcx/actions/workflows/test.yml)
 
-A Garmin Training Center XML (TCX) reader (and future writer). Unlike prior art such as [tcx_rb](https://github.com/keithdoggett/tcx_rb) or [tcxread](https://github.com/firefly-cpp/tcxread), aims to provide a more coherent API by implementing the complete read/write [TCX schema](https://www8.garmin.com/xmlschemas/TrainingCenterDatabasev2.xsd) in a more structured way.
+A Garmin Training Center XML (TCX) reader and writer. Unlike other libraries such as [tcx_rb](https://github.com/keithdoggett/tcx_rb) or [tcxread](https://github.com/firefly-cpp/tcxread), provides a consistent API by implementing the complete read/write [TCX schema](https://www8.garmin.com/xmlschemas/TrainingCenterDatabasev2.xsd) with extensions in a structured and organized way.
 
 ## Installation
 
@@ -19,7 +19,7 @@ Run `bundle install`.
 
 ### Working with Files
 
-Read and write TCX files using `Tcx#load_file` and `dump`. See [examples/multiple_running_activities.rb](examples/multiple_running_activities.rb) for a working example.
+Read and write TCX files using `Tcx#load_file` and `dump`. 
 
 ```ruby
 require 'tcx'
@@ -48,6 +48,10 @@ tcx.to_xml # => XML string
 
 tcx.dump('activities2.tcx') # writes to activities2.tcx
 ```
+
+### Examples
+
+See [examples/multiple_running_activities.rb](examples/multiple_running_activities.rb) for a complete working example.
 
 ## Upgrading
 

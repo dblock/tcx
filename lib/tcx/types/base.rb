@@ -6,6 +6,11 @@ module Tcx
     extend Forwardable
 
     def self.parse(xml)
+      if (tt = xml['xsi:type'])
+        klass = Tcx.const_get(tt.gsub(/_t$/, ''))
+        return klass.parse(xml) if self != klass
+      end
+
       attributes = xml.attributes.to_h
 
       xml.children.each do |child|
@@ -38,7 +43,9 @@ module Tcx
 
     def self.namespace_definitions
       {
+        'xsi:schemaLocation' => 'http://www.garmin.com/xmlschemas/TrainingCenterDatabase/v2 http://www.garmin.com/xmlschemas/TrainingCenterDatabasev2.xsd',
         'xmlns' => 'http://www.garmin.com/xmlschemas/TrainingCenterDatabase/v2',
+        'xmlns:xsi' => 'http://www.w3.org/2001/XMLSchema-instance',
         'xmlns:ns2' => 'http://www.garmin.com/xmlschemas/UserProfile/v2',
         'xmlns:ns3' => 'http://www.garmin.com/xmlschemas/ActivityExtension/v2',
         'xmlns:ns4' => 'http://www.garmin.com/xmlschemas/ProfileExtension/v1',
@@ -62,7 +69,7 @@ module Tcx
       attribute_values
     end
 
-    def build(builder)
+    def build_xml(builder)
       (self.class.properties - self.class.attributes).each do |property|
         value = self[property]
         next unless value
@@ -88,7 +95,7 @@ module Tcx
 
       builder.send(property_name, attributes) do |property_builder|
         property_builder = property_builder[namespace] if namespace
-        el.build(property_builder)
+        el.build_xml(property_builder)
       end
     end
 

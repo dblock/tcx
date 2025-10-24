@@ -6,6 +6,7 @@ gemspec
 
 group :development, :test do
   gem 'dotenv'
+  gem 'logger'
   gem 'rake'
   gem 'rspec'
   gem 'rspec-temp_dir'

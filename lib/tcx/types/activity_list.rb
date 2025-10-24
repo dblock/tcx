@@ -10,10 +10,10 @@ module Tcx
       ActivityList.new('Activities' => list.xpath('xmlns:Activity'))
     end
 
-    def build(builder)
+    def build_xml(builder)
       activities.each do |activity|
         builder.Activity(activity.attributes) do |activity_builder|
-          activity.build(activity_builder)
+          activity.build_xml(activity_builder)
         end
       end
     end

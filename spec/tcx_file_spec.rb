@@ -54,12 +54,10 @@ describe Tcx::File do
         expect(content).to include('TrainingCenterDatabase')
       end
 
-      # it 'writes content that matches original file' do
-      #   original_xml = Nokogiri::XML(File.read(file_path))
-      #   tcx_file.dump(temp_file)
-      #   dumped_xml = Nokogiri::XML(File.read(temp_file))
-      #   expect(dumped_xml).to eq(original_xml)
-      # end
+      it 'writes content that matches original file' do
+        tcx_file.dump(temp_file)
+        expect(FileUtils.compare_file(file_path, temp_file)).to be_truthy
+      end
     end
   end
 

@@ -24,11 +24,8 @@ module Tcx
 
     def to_xml_builder
       Nokogiri::XML::Builder.new(encoding: 'UTF-8') do |xml|
-        xml.TrainingCenterDatabase({
-          'xsi:schemaLocation' => 'http://www.garmin.com/xmlschemas/TrainingCenterDatabase/v2 http://www.garmin.com/xmlschemas/TrainingCenterDatabasev2.xsd',
-          'xmlns' => 'http://www.garmin.com/xmlschemas/TrainingCenterDatabase/v2'
-        }.merge(Base.namespace_definitions)) do |xml|
-          build(xml)
+        xml.TrainingCenterDatabase(Base.namespace_definitions) do |xml|
+          build_xml(xml)
         end
       end
     end
