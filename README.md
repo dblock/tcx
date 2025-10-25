@@ -3,9 +3,34 @@
 [![Gem Version](https://badge.fury.io/rb/tcx.svg)](https://badge.fury.io/rb/tcx)
 [![Test](https://github.com/dblock/tcx/actions/workflows/test.yml/badge.svg?branch=master)](https://github.com/dblock/tcx/actions/workflows/test.yml)
 
-A Garmin Training Center XML (.TCX) reader and writer.
+A comprehensive Ruby library for reading and writing Garmin Training Center XML (.TCX) files.
 
-Unlike other libraries such as [tcx_rb](https://github.com/keithdoggett/tcx_rb) or [tcxread](https://github.com/firefly-cpp/tcxread), provides a more idiomatic API, implements both read and write, and supports the entire [TCX schema](https://www8.garmin.com/xmlschemas/TrainingCenterDatabasev2.xsd), including extensions.
+## Features
+
+- **Complete TCX v2 Support** - Full implementation of the [TCX schema](https://www8.garmin.com/xmlschemas/TrainingCenterDatabasev2.xsd)
+- **Read & Write** - Parse existing TCX files and generate new ones
+- **Type-Safe API** - Idiomatic Ruby objects for all TCX types
+- **Extension Support** - Garmin's ActivityExtension v2 for speed, cadence, power, and steps
+- **Round-Trip XML** - Parse and regenerate identical TCX files
+- **Comprehensive Documentation** - YARD documentation for all classes and methods
+
+### Supported Data Types
+
+- **Activities** - Running, cycling, swimming, multisport (triathlons), and other GPS-tracked workouts
+- **Workouts** - Structured workout plans with steps, intervals, and targets
+- **Courses** - Predefined routes with GPS tracks and waypoints
+- **Laps & Trackpoints** - Detailed GPS data with heart rate, cadence, speed, altitude, and power
+- **History & Organization** - Folder structures for organizing activities, workouts, and courses
+
+### Why This Library?
+
+Unlike other TCX libraries such as [tcx_rb](https://github.com/keithdoggett/tcx_rb) or [tcxread](https://github.com/firefly-cpp/tcxread), this library:
+
+- Implements both read **and** write operations
+- Supports the complete TCX schema including workouts, courses, and extensions
+- Provides a more idiomatic Ruby API with full YARD documentation
+- Maintains round-trip XML fidelity (parse → modify → write)
+- Includes comprehensive test coverage with real-world TCX files
 
 ## Installation
 
@@ -19,41 +44,146 @@ Run `bundle install`.
 
 ## Usage
 
-### Working with Files
-
-Read and write TCX files using `Tcx#load_file` and `dump`. 
+### Quick Start
 
 ```ruby
 require 'tcx'
 
-tcx = Tcx.load_file('activities.tcx') # => Tcx::Database
+# Load a TCX file
+file = Tcx.load_file('activity.tcx')
 
-tcx.activities # => [Tcx::Activity], array of Tcx::Activity
-tcx.workouts # => [Tcx::Workout]
-tcx.courses # => [Tcx::Course]
+# Access activities
+file.activities.each do |activity|
+  distance = activity.distance_meters
+  time = activity.total_time_seconds
+  puts "#{activity.sport}: #{distance}m in #{time}s" if distance && time
 
-tcx.dump # overwrites activities.tcx
-
-tcx.dump('activities2.tcx') # writes to activities2.tcx
+  # Access laps
+  activity.laps.each do |lap|
+    hr = lap.average_heart_rate_bpm&.to_i
+    puts "  Lap: #{lap.distance_meters}m, HR: #{hr} bpm" if hr
+  end
+end
 ```
 
-### Working with XML Data
-
-Directly manipulate TCX data without creating files.
+### Working with Activities
 
 ```ruby
-data = File.read('activities.tcx') # String
+file = Tcx.load_file('run.tcx')
+activity = file.activities.first
 
-tcx = Tcx.load(data) # => Tcx::Database
+# Basic metrics
+activity.sport                  # => :running
+activity.distance_meters        # => 5000.0
+activity.total_time_seconds     # => 1500.0
+activity.calories               # => 350
+activity.average_heart_rate_bpm # => 155
 
-tcx.to_xml # => XML string
+# Access GPS data
+activity.laps.each do |lap|
+  lap.tracks.each do |track|
+    track.trackpoints.each do |point|
+      puts "#{point.time}: #{point.position.latitude_degrees}, #{point.position.longitude_degrees}"
+      puts "  HR: #{point.heart_rate_bpm}, Alt: #{point.altitude_meters}m"
 
-tcx.dump('activities2.tcx') # writes to activities2.tcx
+      # Extension data (speed, cadence, power)
+      if point.extensions&.TPX
+        puts "  Speed: #{point.extensions.TPX.speed} m/s"
+        puts "  Cadence: #{point.extensions.TPX.run_cadence} steps/min"
+      end
+    end
+  end
+end
 ```
 
-### Examples
+### Working with Workouts
 
-See [examples](examples) for a complete set of working samples.
+```ruby
+file = Tcx.load_file('workout.tcx')
+workout = file.workouts.first
+
+workout.name    # => "5x1K Intervals"
+workout.sport   # => :running
+
+# Access workout steps
+workout.steps.each do |step|
+  puts "Step: #{step.name}"
+  puts "  Duration: #{step.duration.seconds}s" if step.duration.seconds
+  puts "  Intensity: #{step.intensity}"
+  puts "  Target HR Zone: #{step.target.heart_rate_zone.number}" if step.target.heart_rate_zone
+end
+```
+
+### Working with Courses
+
+```ruby
+file = Tcx.load_file('course.tcx')
+course = file.courses.first
+
+course.name     # => "Boston Marathon 2024"
+
+# Access course points (aid stations, turns, etc.)
+course.course_points.each do |point|
+  puts "#{point.name} (#{point.point_type}): #{point.position.latitude_degrees}, #{point.position.longitude_degrees}"
+end
+```
+
+### Parsing XML Data
+
+Directly manipulate TCX data without files.
+
+```ruby
+xml_string = File.read('activity.tcx')
+database = Tcx.load(xml_string)
+
+# Modify data
+database.activities.first.sport = :biking
+
+# Generate XML
+xml_output = database.to_xml
+
+# Write to file
+database.dump('modified_activity.tcx')
+```
+
+### Creating New TCX Files
+
+```ruby
+# Create a new empty database
+file = Tcx::File.new
+
+# Add activities, workouts, or courses
+file.database.activities = [...]
+
+# Write to disk
+file.dump('new_activity.tcx')
+```
+
+### More Examples
+
+See [examples](examples) for a complete set of runnable examples:
+
+- **[quick_start.rb](examples/quick_start.rb)** - Basic usage: loading files and accessing activities
+- **[working_with_activities.rb](examples/working_with_activities.rb)** - Detailed activity analysis with GPS data and extensions
+- **[working_with_workouts.rb](examples/working_with_workouts.rb)** - Structured workout plans with steps and targets
+- **[working_with_courses.rb](examples/working_with_courses.rb)** - Course routes with waypoints and GPS tracks
+- **[parsing_xml_data.rb](examples/parsing_xml_data.rb)** - In-memory XML parsing and modification
+- **[creating_new_files.rb](examples/creating_new_files.rb)** - Creating new TCX files from templates
+- **[multiple_running_activities.rb](examples/multiple_running_activities.rb)** - Working with multiple activities
+- **[brighton_beach_course.rb](examples/brighton_beach_course.rb)** - Course analysis example
+- **[dump_and_diff.rb](bin/dump_and_diff.rb)** - Round-trip XML verification utility
+
+Run any example with:
+
+```bash
+bundle exec ruby examples/quick_start.rb
+```
+
+Run the [dump_and_diff](bin/dump_and_diff.rb) utility with:
+
+```bash
+bundle exec ruby bin/dump_and_diff.rb path/to/activity.tcx
+```
 
 ## Upgrading
 
