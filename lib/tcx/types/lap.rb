@@ -16,8 +16,62 @@ module Tcx
     property 'notes', from: 'Notes'
     property 'extensions', from: 'Extensions', transform_with: ->(v) { ExtensionsList.parse(v) }
 
+    def end_time
+      return if start_time.nil? || total_time_seconds.nil?
+
+      start_time + total_time_seconds
+    end
+
     def self.attributes
       ['start_time']
+    end
+
+    # LX
+
+    def avg_speed
+      extensions&.LX&.avg_speed
+    end
+
+    def max_bike_cadence
+      extensions&.LX&.max_bike_cadence
+    end
+
+    def avg_run_cadence
+      extensions&.LX&.avg_run_cadence
+    end
+
+    def max_run_cadence
+      extensions&.LX&.max_run_cadence
+    end
+
+    def steps
+      extensions&.LX&.steps
+    end
+
+    def avg_watts
+      extensions&.LX&.avg_watts
+    end
+
+    def max_watts
+      extensions&.LX&.max_watts
+    end
+
+    # TPX
+
+    def speed
+      extensions&.TPX&.speed
+    end
+
+    def run_cadence
+      extensions&.TPX&.run_cadence
+    end
+
+    def watts
+      extensions&.TPX&.watts
+    end
+
+    def cadence_sensor
+      extensions&.TPX&.cadence_sensor
     end
   end
 end

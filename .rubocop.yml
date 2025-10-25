@@ -31,9 +31,11 @@ RSpec/ContextWording:
 RSpec/MessageSpies:
   EnforcedStyle: receive
 
+Style/SafeNavigationChainLength:
+  Enabled: false
+
 inherit_from: .rubocop_todo.yml
 
 require:
   - rubocop-rake
   - rubocop-rspec
-

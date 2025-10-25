@@ -1,5 +1,6 @@
 ### 0.3.1 (Next)
 
+* Added calculated properties to `Activity` and `Lap` - [@dblock](https://github.com/dblock).
 * Your contribution here.
 
 ### 0.3.0 (2025-10-24)

@@ -89,13 +89,25 @@ describe Tcx::File do
       expect(tcx.activities.count).to eq 2
     end
 
-    context 'the first activity' do
+    describe 'the first activity' do
       let(:activity) { tcx.activities.first }
 
       it 'has the correct properties' do
         expect(activity.id).to eq '2014-12-26T10:00:39Z'
         expect(activity.sport).to eq 'Running'
         expect(activity.notes).to be_nil
+        expect(activity.total_time_seconds).to eq 3270.0
+        expect(activity.end_time).to eq Time.parse('2014-12-26 10:55:10 +0000')
+        expect(activity.distance_meters).to eq 14_332.28
+        expect(activity.maximum_speed).to eq 6.247000217437744
+        expect(activity.calories).to eq 1182
+        expect(activity.average_heart_rate_bpm).to eq 177.06666666666666
+        expect(activity.maximum_heart_rate_bpm).to eq 181
+        expect(activity.average_pace).to eq 4.382960244648318
+        expect(activity.max_bike_cadence).to be_nil
+        expect(activity.max_run_cadence).to be_nil
+        expect(activity.steps).to eq 0
+        expect(activity.max_watts).to be_nil
       end
 
       it 'has the correct number of laps' do
@@ -105,9 +117,10 @@ describe Tcx::File do
       describe '.laps' do
         let(:lap) { activity.laps.first }
 
-        it 'has the correct id' do
+        it 'has the correct properties' do
           expect(lap.start_time).to eq Time.parse('2014-12-26 10:00:39 +0000')
           expect(lap.total_time_seconds).to eq 201.0
+          expect(lap.end_time).to eq Time.parse('2014-12-26 10:04:00 +0000')
           expect(lap.distance_meters).to eq 1000.0
           expect(lap.maximum_speed).to eq 6.105999946594238
           expect(lap.calories).to eq 66
@@ -118,9 +131,25 @@ describe Tcx::File do
           expect(lap.trigger_method).to eq 'Manual'
           expect(lap.notes).to be_nil
           expect(lap.extensions.keys).to eq(%w[LX])
-          expect(lap.extensions.LX.avg_speed).to eq(4.96999979019165)
-          # TODO: expect(lap.avg_speed).to eq(4.96999979019165)
           expect(lap.tracks.count).to eq 1
+          expect(lap.extensions.LX.avg_speed).to eq(4.96999979019165)
+        end
+
+        it 'delegates LX' do
+          expect(lap.avg_speed).to eq(4.96999979019165)
+          expect(lap.max_bike_cadence).to be_nil
+          expect(lap.avg_run_cadence).to be_nil
+          expect(lap.max_run_cadence).to be_nil
+          expect(lap.steps).to be_nil
+          expect(lap.avg_watts).to be_nil
+          expect(lap.max_watts).to be_nil
+        end
+
+        it 'delegates TPX' do
+          expect(lap.speed).to be_nil
+          expect(lap.run_cadence).to be_nil
+          expect(lap.watts).to be_nil
+          expect(lap.cadence_sensor).to be_nil
         end
 
         describe '.tracks' do
