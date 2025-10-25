@@ -11,6 +11,7 @@ A comprehensive Ruby library for reading and writing Garmin Training Center XML 
 - **Read & Write** - Parse existing TCX files and generate new ones
 - **Type-Safe API** - Idiomatic Ruby objects for all TCX types
 - **Extension Support** - Garmin's ActivityExtension v2 for speed, cadence, power, and steps
+- **Distance Unit Conversions** - Built-in conversions to kilometers, miles, feet, and yards
 - **Round-Trip XML** - Parse and regenerate identical TCX files
 - **Comprehensive Documentation** - YARD documentation for all classes and methods
 
@@ -78,6 +79,12 @@ activity.distance_meters        # => 5000.0
 activity.total_time_seconds     # => 1500.0
 activity.calories               # => 350
 activity.average_heart_rate_bpm # => 155
+
+# Distance unit conversions
+activity.distance_kilometers    # => 5.0
+activity.distance_miles         # => 3.10686
+activity.distance_kilometers_s  # => "5km"
+activity.distance_miles_s       # => "3.11mi"
 
 # Access GPS data
 activity.laps.each do |lap|
@@ -157,6 +164,35 @@ file.database.activities = [...]
 
 # Write to disk
 file.dump('new_activity.tcx')
+```
+
+### Distance Unit Conversions
+
+Activities, laps, course laps, trackpoints, and quick workouts all support automatic distance unit conversions:
+
+```ruby
+activity = file.activities.first
+
+# Raw distance in meters
+activity.distance_meters        # => 5000.0
+
+# Convert to other units
+activity.distance_kilometers    # => 5.0
+activity.distance_miles         # => 3.10686
+activity.distance_feet          # => 16404.2
+activity.distance_yards         # => 5468.05
+
+# Formatted strings
+activity.distance_kilometers_s  # => "5km"
+activity.distance_miles_s       # => "3.11mi"
+activity.distance_meters_s      # => "5000m"
+activity.distance_yards_s       # => "5468yd"
+activity.distance_s             # => "5km" (alias for distance_kilometers_s)
+
+# Works on laps, trackpoints, and course laps too
+lap = activity.laps.first
+lap.distance_miles              # => 0.621371
+lap.distance_miles_s            # => "0.62mi"
 ```
 
 ### More Examples

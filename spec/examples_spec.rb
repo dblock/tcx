@@ -4,11 +4,11 @@ require 'spec_helper'
 require 'open3'
 
 describe 'Examples' do
-  let(:examples_dir) { File.join(File.dirname(__FILE__), '..', 'examples') }
-  let(:lib_dir) { File.join(File.dirname(__FILE__), '..', 'lib') }
+  let(:examples_dir) { File.join(File.dirname(__FILE__), '../examples') }
+  let(:lib_dir) { File.join(File.dirname(__FILE__), '../lib') }
 
   # Dynamically generate specs for all example files
-  Dir.glob(File.join(File.dirname(__FILE__), '..', 'examples', '*.rb')).each do |example_path|
+  Dir.glob(File.join(File.dirname(__FILE__), '../examples/*.rb')).each do |example_path|
     example_file = File.basename(example_path)
 
     describe example_file do

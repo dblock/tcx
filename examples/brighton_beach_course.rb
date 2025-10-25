@@ -41,6 +41,13 @@ puts
 tcx.courses.each_with_index do |course, index|
   puts "Course #{index + 1}:"
   puts "  Name: #{course.name}"
+
+  # Display course laps with distance conversions
+  if course.laps&.any?
+    total_distance = course.laps.first.distance_meters
+    puts "  Total Distance: #{course.laps.first.distance_kilometers_s} (#{course.laps.first.distance_miles_s})" if total_distance
+  end
+
   puts "  Tracks: #{course.tracks.count}"
 
   # Each track contains a series of trackpoints (GPS coordinates)

@@ -34,6 +34,8 @@ module Tcx
   # @see Course
   # @see Lap
   class CourseLap < Base
+    include DistanceMeters
+
     # Expected duration for this course segment
     # @return [Float] duration in seconds
     property 'total_time_seconds', from: 'TotalTimeSeconds', transform_with: lambda(&:to_f)

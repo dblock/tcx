@@ -29,6 +29,8 @@ module Tcx
   #     'HeartRateBpm' => { 'Value' => 145 }
   #   )
   class Trackpoint < Base
+    include DistanceMeters
+
     # Timestamp when this data point was recorded
     # @return [Time] recording timestamp
     property 'time', from: 'Time', transform_with: ->(v) { ::Time.parse(v) }

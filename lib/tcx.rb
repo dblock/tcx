@@ -7,6 +7,7 @@ require 'nokogiri'
 require 'forwardable'
 
 require_relative 'tcx/version'
+require_relative 'tcx/mixins'
 require_relative 'tcx/types'
 require_relative 'tcx/extensions'
 require_relative 'tcx/file'
@@ -31,7 +32,7 @@ require_relative 'tcx/file'
 #
 # Parse TCX from a string:
 #   database = Tcx.load(xml_string)
-#   puts database.activities.first.total_distance_meters
+#   puts database.activities.first.distance_meters
 #
 # Create a new TCX file:
 #   file = Tcx::File.new

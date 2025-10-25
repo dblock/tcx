@@ -5,9 +5,7 @@ require 'spec_helper'
 describe Tcx::File do
   context 'with a file path' do
     let(:file_path) do
-      File.join(
-        File.dirname(__FILE__), '..', 'data', 'running', 'multiple_running_activities.tcx'
-      )
+      File.join(File.dirname(__FILE__), '../data/running/multiple_running_activities.tcx')
     end
 
     let(:tcx_file) { described_class.new(file_path) }
@@ -78,11 +76,7 @@ describe Tcx::File do
 
   context 'with multiple running activities' do
     let(:tcx) do
-      described_class.new(
-        File.join(
-          File.dirname(__FILE__), '..', 'data', 'running', 'multiple_running_activities.tcx'
-        )
-      )
+      described_class.new(File.join(File.dirname(__FILE__), '../data/running/multiple_running_activities.tcx'))
     end
 
     it 'has the correct number of activities' do
@@ -215,11 +209,7 @@ describe Tcx::File do
 
   context 'with a course' do
     let(:tcx) do
-      described_class.new(
-        File.join(
-          File.dirname(__FILE__), '..', 'data', 'courses', 'brighton-beach.tcx'
-        )
-      )
+      described_class.new(File.join(File.dirname(__FILE__), '../data/courses/brighton-beach.tcx'))
     end
 
     it 'contains a course' do
@@ -282,11 +272,7 @@ describe Tcx::File do
 
   context 'with a workout' do
     let(:tcx) do
-      described_class.new(
-        File.join(
-          File.dirname(__FILE__), '..', 'data', 'workouts', 'simple_workout_1.tcx'
-        )
-      )
+      described_class.new(File.join(File.dirname(__FILE__), '../data/workouts/simple_workout_1.tcx'))
     end
 
     it 'contains a workout' do

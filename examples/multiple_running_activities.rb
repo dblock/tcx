@@ -49,6 +49,11 @@ tcx.activities.each_with_index do |activity, index|
   # Sport type (Running, Biking, Other, etc.)
   puts "  Sport: #{activity.sport}"
 
+  # Distance information with unit conversions
+  # The DistanceMeters mixin provides convenient conversion methods
+  distance = activity.distance_meters
+  puts "  Distance: #{activity.distance_kilometers_s} (#{activity.distance_miles_s})" if distance
+
   # Lap information
   # Activities are divided into laps, each with its own start time and duration
   # Here we calculate the total activity timespan from first lap start to last lap end

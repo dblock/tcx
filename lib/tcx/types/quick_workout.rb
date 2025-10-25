@@ -23,6 +23,8 @@ module Tcx
   # @see Training
   # @see Workout
   class QuickWorkout < Base
+    include DistanceMeters
+
     # Total workout duration in seconds
     # @return [Float] duration in seconds
     property 'total_time_seconds', from: 'TotalTimeSeconds', transform_with: lambda(&:to_f)

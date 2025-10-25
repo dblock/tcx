@@ -10,6 +10,6 @@ require 'fileutils'
 require 'rspec/temp_dir'
 require 'super_diff/rspec'
 
-Dir[File.join(File.dirname(__FILE__), 'support', '**/*.rb')].each do |file|
+Dir[File.join(File.dirname(__FILE__), 'support/**/*.rb')].each do |file|
   require file
 end

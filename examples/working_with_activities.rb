@@ -24,7 +24,7 @@ puts "  Sport: #{activity.sport}"
 puts "  ID: #{activity.id}"
 
 distance = activity.distance_meters
-puts "  Total Distance: #{distance}m" if distance
+puts "  Total Distance: #{activity.distance_meters_s} / #{activity.distance_kilometers_s} / #{activity.distance_miles_s}" if distance
 
 time = activity.total_time_seconds
 puts "  Total Time: #{time}s" if time

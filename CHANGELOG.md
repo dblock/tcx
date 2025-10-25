@@ -1,5 +1,6 @@
-### 0.3.1 (Next)
+### 0.4.0 (Next)
 
+* Added distance unit conversion - [@dblock](https://github.com/dblock).
 * Added calculated properties to `Activity` and `Lap` - [@dblock](https://github.com/dblock).
 * Your contribution here.
 

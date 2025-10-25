@@ -15,7 +15,7 @@ module Tcx
   # @example Load an existing TCX file
   #   file = Tcx::File.new('/path/to/activity.tcx')
   #   file.activities.each do |activity|
-  #     puts "#{activity.sport}: #{activity.total_distance_meters}m"
+  #     puts "#{activity.sport}: #{activity.distance_meters}m"
   #   end
   #
   # @example Create a new TCX file

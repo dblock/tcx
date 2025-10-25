@@ -23,6 +23,8 @@ module Tcx
   #   puts "Total distance: #{activity.distance_meters}m"
   #   puts "Average heart rate: #{activity.average_heart_rate_bpm} bpm"
   class Activity < Base
+    include DistanceMeters
+
     # The sport type for this activity (Running, Biking, etc.)
     # @return [Sport] the sport enumeration value
     property 'sport', from: 'Sport', transform_with: ->(v) { Sport.parse(v) }

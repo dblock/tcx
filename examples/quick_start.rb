@@ -23,7 +23,7 @@ file.activities.each_with_index do |activity, index|
   puts "  Sport: #{activity.sport}"
 
   distance = activity.distance_meters
-  puts "  Distance: #{distance}m" if distance
+  puts "  Distance: #{distance}m (#{activity.distance_kilometers}km / #{activity.distance_miles_s})" if distance
 
   time = activity.total_time_seconds
   puts "  Time: #{time}s" if time

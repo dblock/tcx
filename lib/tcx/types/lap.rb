@@ -28,6 +28,8 @@ module Tcx
   #   lap = Lap.new('StartTime' => '2024-06-15T08:00:00Z', 'TotalTimeSeconds' => 600)
   #   puts "Lap distance: #{lap.distance_meters}m in #{lap.total_time_seconds}s"
   class Lap < Base
+    include DistanceMeters
+
     # The timestamp when this lap started (stored as XML attribute)
     # @return [Time] lap start time
     property 'start_time', from: 'StartTime', transform_with: ->(v) { ::Time.parse(v) }
