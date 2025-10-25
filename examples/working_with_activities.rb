@@ -37,6 +37,11 @@ puts "  Average HR: #{avg_hr} bpm" if avg_hr
 
 max_hr = activity.maximum_heart_rate_bpm
 puts "  Max HR: #{max_hr} bpm" if max_hr
+
+if activity.average_speed
+  puts "  Average Speed: #{activity.average_speed_kilometer_per_hour_s} (#{activity.average_speed_miles_per_hour_s})"
+  puts "  Average Pace: #{activity.pace_per_kilometer_s} (#{activity.pace_per_mile_s})"
+end
 puts
 
 # Access GPS data from first lap
@@ -69,8 +74,11 @@ end
 # Lap extension data
 if lap.extensions&.LX
   puts 'Lap Extension Data:'
-  puts "  Average Speed: #{lap.extensions.LX.avg_speed} m/s" if lap.extensions.LX.avg_speed
+  if lap.average_speed
+    puts "  Average Speed: #{lap.average_speed_kilometer_per_hour_s} (#{lap.average_speed_miles_per_hour_s})"
+    puts "  Average Pace: #{lap.pace_per_kilometer_s} (#{lap.pace_per_mile_s})"
+  end
   puts "  Steps: #{lap.extensions.LX.steps}" if lap.extensions.LX.steps
-  puts "  Average Run Cadence: #{lap.extensions.LX.avg_run_cadence} steps/min" if lap.extensions.LX.avg_run_cadence
-  puts "  Max Run Cadence: #{lap.extensions.LX.max_run_cadence} steps/min" if lap.extensions.LX.max_run_cadence
+  puts "  Average Run Cadence: #{lap.average_run_cadence} steps/min" if lap.average_run_cadence
+  puts "  Max Run Cadence: #{lap.max_run_cadence} steps/min" if lap.max_run_cadence
 end

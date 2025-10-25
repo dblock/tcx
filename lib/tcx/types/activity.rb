@@ -24,6 +24,7 @@ module Tcx
   #   puts "Average heart rate: #{activity.average_heart_rate_bpm} bpm"
   class Activity < Base
     include DistanceMeters
+    include AverageSpeed
 
     # The sport type for this activity (Running, Biking, etc.)
     # @return [Sport] the sport enumeration value
@@ -108,9 +109,9 @@ module Tcx
       laps&.map { |lap| lap.maximum_heart_rate_bpm&.to_i }&.compact&.max
     end
 
-    # Calculate average pace (speed) for the activity
+    # Calculate average speed for the activity
     # @return [Float, nil] average speed in meters/second, 0 if no time, or nil
-    def average_pace
+    def average_speed
       tts = total_time_seconds
       ldm = distance_meters
 

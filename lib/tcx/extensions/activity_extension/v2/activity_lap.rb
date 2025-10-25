@@ -22,9 +22,12 @@ module Tcx
         # @see Lap
         # @see ExtensionsList
         class ActivityLap < Base
+          include AverageSpeed
+
           # Average speed for the lap in meters per second
           # @return [Float, nil] average speed in m/s or nil
           property 'avg_speed', from: 'AvgSpeed', transform_with: lambda(&:to_f)
+          alias average_speed avg_speed
 
           # Maximum cycling cadence for the lap in RPM
           # @return [Integer, nil] max bike cadence in RPM or nil
@@ -33,6 +36,7 @@ module Tcx
           # Average running cadence for the lap in steps per minute
           # @return [Integer, nil] average run cadence in steps/min or nil
           property 'avg_run_cadence', from: 'AvgRunCadence', transform_with: lambda(&:to_i)
+          alias average_run_cadence avg_run_cadence
 
           # Maximum running cadence for the lap in steps per minute
           # @return [Integer, nil] max run cadence in steps/min or nil
@@ -45,6 +49,7 @@ module Tcx
           # Average power for the lap in watts
           # @return [Integer, nil] average power in watts or nil
           property 'avg_watts', from: 'AvgWatts', transform_with: lambda(&:to_i)
+          alias average_watts avg_watts
 
           # Maximum power for the lap in watts
           # @return [Integer, nil] max power in watts or nil

@@ -11,7 +11,7 @@ A comprehensive Ruby library for reading and writing Garmin Training Center XML 
 - **Read & Write** - Parse existing TCX files and generate new ones
 - **Type-Safe API** - Idiomatic Ruby objects for all TCX types
 - **Extension Support** - Garmin's ActivityExtension v2 for speed, cadence, power, and steps
-- **Distance Unit Conversions** - Built-in conversions to kilometers, miles, feet, and yards
+- **Distance & Speed Conversions** - Built-in conversions for distance and speed/pace metrics
 - **Round-Trip XML** - Parse and regenerate identical TCX files
 - **Comprehensive Documentation** - YARD documentation for all classes and methods
 
@@ -85,6 +85,13 @@ activity.distance_kilometers    # => 5.0
 activity.distance_miles         # => 3.10686
 activity.distance_kilometers_s  # => "5km"
 activity.distance_miles_s       # => "3.11mi"
+
+# Speed and pace conversions
+activity.average_speed                       # => 3.33 (calculated from distance/time)
+activity.average_speed_kilometer_per_hour_s  # => "12.0km/h"
+activity.average_speed_miles_per_hour_s      # => "7.5mph"
+activity.pace_per_kilometer_s                # => "5m00s/km"
+activity.pace_per_mile_s                     # => "8m03s/mi"
 
 # Access GPS data
 activity.laps.each do |lap|
@@ -193,6 +200,30 @@ activity.distance_s             # => "5km" (alias for distance_kilometers_s)
 lap = activity.laps.first
 lap.distance_miles              # => 0.621371
 lap.distance_miles_s            # => "0.62mi"
+```
+
+### Speed and Pace Conversions
+
+Activities and laps support automatic speed and pace conversions:
+
+```ruby
+# Activity-level speed/pace (calculated from total distance and time)
+activity.average_speed                       # => 3.33
+activity.average_speed_kilometer_per_hour_s  # => "12.0km/h"
+activity.average_speed_miles_per_hour_s      # => "7.5mph"
+activity.pace_per_kilometer_s                # => "5m00s/km"
+activity.pace_per_mile_s                     # => "8m03s/mi"
+
+# Lap-level speed/pace (from extension data)
+lap = activity.laps.first
+lap.average_speed                       # => 3.5 (from extension data)
+lap.average_speed_kilometer_per_hour_s  # => "12.6km/h"
+lap.average_speed_miles_per_hour_s      # => "7.8mph"
+lap.average_speed_s                     # => "12.6km/h" (alias)
+lap.pace_per_kilometer_s                # => "4m46s/km"
+lap.pace_per_mile_s                     # => "7m38s/mi"
+lap.pace_per_100_meters_s               # => "0m28s/100m"
+lap.pace_per_100_yards_s                # => "0m26s/100yd"
 ```
 
 ### More Examples

@@ -29,6 +29,7 @@ module Tcx
   #   puts "Lap distance: #{lap.distance_meters}m in #{lap.total_time_seconds}s"
   class Lap < Base
     include DistanceMeters
+    include AverageSpeed
 
     # The timestamp when this lap started (stored as XML attribute)
     # @return [Time] lap start time
@@ -101,9 +102,10 @@ module Tcx
 
     # Average speed from lap extensions
     # @return [Float, nil] average speed in meters/second or nil
-    def avg_speed
+    def average_speed
       extensions&.LX&.avg_speed
     end
+    alias avg_speed average_speed
 
     # Maximum bike cadence from lap extensions
     # @return [Integer, nil] maximum cadence in RPM or nil
@@ -113,9 +115,10 @@ module Tcx
 
     # Average run cadence from lap extensions
     # @return [Integer, nil] average cadence in SPM or nil
-    def avg_run_cadence
+    def average_run_cadence
       extensions&.LX&.avg_run_cadence
     end
+    alias avg_run_cadence average_run_cadence
 
     # Maximum run cadence from lap extensions
     # @return [Integer, nil] maximum cadence in SPM or nil
@@ -131,9 +134,10 @@ module Tcx
 
     # Average power output from lap extensions
     # @return [Integer, nil] average power in watts or nil
-    def avg_watts
+    def average_watts
       extensions&.LX&.avg_watts
     end
+    alias avg_watts average_watts
 
     # Maximum power output from lap extensions
     # @return [Integer, nil] maximum power in watts or nil

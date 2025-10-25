@@ -97,7 +97,7 @@ describe Tcx::File do
         expect(activity.calories).to eq 1182
         expect(activity.average_heart_rate_bpm).to eq 177.06666666666666
         expect(activity.maximum_heart_rate_bpm).to eq 181
-        expect(activity.average_pace).to eq 4.382960244648318
+        expect(activity.average_speed).to eq 4.382960244648318
         expect(activity.max_bike_cadence).to be_nil
         expect(activity.max_run_cadence).to be_nil
         expect(activity.steps).to eq 0
