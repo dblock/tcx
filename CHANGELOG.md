@@ -1,3 +1,7 @@
+### 0.3.1 (Next)
+
+* Your contribution here.
+
 ### 0.3.0 (2025-10-24)
 
 * Added reading and writing multisport activity folders - [@dblock](https://github.com/dblock).
