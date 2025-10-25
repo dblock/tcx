@@ -5,10 +5,10 @@ module Tcx
     property 'name', from: 'Name'
     property 'extensions', from: 'Extensions', transform_with: ->(v) { ExtensionsList.parse(v) }
     property 'type', from: 'Type', transform_with: ->(v) { TrainingType.parse(v) }
-    property 'interval_workout', from: 'IntervalWorkout', transform_with: ->(v) { v == 'true' }
+    property 'interval_workout', from: 'IntervalWorkout', transform_with: ->(v) { BooleanType.parse(v) }
 
     def self.attributes
-      %w[type interval_workout]
+      %w[interval_workout type]
     end
   end
 end

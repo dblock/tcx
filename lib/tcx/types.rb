@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require_relative 'types/base'
+require_relative 'types/boolean_type'
 require_relative 'types/abstract_source'
 require_relative 'types/activity'
 require_relative 'types/activity_list'

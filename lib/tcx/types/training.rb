@@ -5,17 +5,10 @@ module Tcx
     property 'quick_workout_results', from: 'QuickWorkoutResults', transform_with: ->(v) { QuickWorkout.parse(v) }
     property 'plan', from: 'Plan', transform_with: ->(v) { Plan.parse(v) }
 
-    property 'virtual_partner', from: 'VirtualPartner', transform_with: lambda { |v|
-      case v
-      when 'true'
-        true
-      when 'false'
-        false
-      end
-    }
+    property 'virtual_partner', from: 'VirtualPartner', transform_with: ->(v) { BooleanType.parse(v) }
 
-    def attributes
-      super.merge('xsi:type' => 'Application_t')
+    def self.attributes
+      ['virtual_partner']
     end
   end
 end
