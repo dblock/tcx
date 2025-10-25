@@ -36,7 +36,7 @@ describe Tcx do
     let(:tcx) { described_class.load(data) }
 
     it 'returns a database' do
-      expect(tcx).to be_a Tcx::Database
+      expect(tcx).to be_a Tcx::Types::Database
     end
 
     it 'has the correct number of activities' do

@@ -2,8 +2,8 @@
 
 require 'spec_helper'
 
-describe Tcx::AverageSpeed do
-  let(:file_path) { File.join(File.dirname(__FILE__), '../data/running/running_activity_1.tcx') }
+describe Tcx::Mixins::AverageSpeed do
+  let(:file_path) { File.join(File.dirname(__FILE__), '../../data/running/running_activity_1.tcx') }
   let(:tcx) { Tcx.load_file(file_path) }
   let(:activity) { tcx.activities.first }
   let(:lap) { activity.laps.first }
@@ -239,8 +239,8 @@ describe Tcx::AverageSpeed do
   end
 
   describe 'edge cases' do
-    let(:zero_speed_lap) { Tcx::Lap.new }
-    let(:negative_speed_lap) { Tcx::Lap.new }
+    let(:zero_speed_lap) { Tcx::Types::Lap.new }
+    let(:negative_speed_lap) { Tcx::Types::Lap.new }
 
     before do
       # Mock average_speed method to return specific values
@@ -282,7 +282,7 @@ describe Tcx::AverageSpeed do
   end
 
   describe 'conversion accuracy' do
-    let(:exact_speed_lap) { Tcx::Lap.new }
+    let(:exact_speed_lap) { Tcx::Types::Lap.new }
 
     before do
       # 5 m/s = 18 km/h = 11.18 mph

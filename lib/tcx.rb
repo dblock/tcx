@@ -49,12 +49,12 @@ require_relative 'tcx/file'
 #
 # ## Key Classes
 #
-# - {Tcx::Database} - Root container for all TCX data
-# - {Tcx::Activity} - Individual workout/activity
-# - {Tcx::Lap} - Lap within an activity
-# - {Tcx::Trackpoint} - GPS point with sensor data
-# - {Tcx::Workout} - Structured workout plan
-# - {Tcx::Course} - Predefined route
+# - {Tcx::Types::Database} - Root container for all TCX data
+# - {Tcx::Types::Activity} - Individual workout/activity
+# - {Tcx::Types::Lap} - Lap within an activity
+# - {Tcx::Types::Trackpoint} - GPS point with sensor data
+# - {Tcx::Types::Workout} - Structured workout plan
+# - {Tcx::Types::Course} - Predefined route
 #
 # @see https://www8.garmin.com/xmlschemas/TrainingCenterDatabasev2.xsd TCX XSD Schema
 # @see https://github.com/dblock/tcx TCX Ruby Library on GitHub
@@ -71,12 +71,12 @@ module Tcx
 
   # Parse TCX data from a string
   # @param data [String] TCX XML data
-  # @return [Tcx::Database] parsed database object
+  # @return [Tcx::Types::Database] parsed database object
   # @example
   #   xml = File.read('activity.tcx')
   #   database = Tcx.load(xml)
   #   puts database.activities.first.sport
   def self.load(data)
-    Tcx::Database.load(data)
+    Tcx::Types::Database.load(data)
   end
 end

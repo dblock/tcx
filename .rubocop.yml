@@ -34,6 +34,9 @@ RSpec/MessageSpies:
 Style/SafeNavigationChainLength:
   Enabled: false
 
+RSpec/RepeatedExampleGroupDescription:
+  Enabled: false
+
 inherit_from: .rubocop_todo.yml
 
 require:

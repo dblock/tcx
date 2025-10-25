@@ -17,8 +17,8 @@ describe Tcx::File do
     end
 
     describe '#database' do
-      it 'returns a Tcx::Database instance' do
-        expect(tcx_file.database).to be_a Tcx::Database
+      it 'returns a Tcx::Types::Database instance' do
+        expect(tcx_file.database).to be_a Tcx::Types::Database
       end
 
       it 'parses the TCX file correctly' do
@@ -70,7 +70,7 @@ describe Tcx::File do
 
     it 'can be initialized without a file path' do
       expect(tcx_file.file_path).to be_nil
-      expect(tcx_file.database).to be_a Tcx::Database
+      expect(tcx_file.database).to be_a Tcx::Types::Database
     end
   end
 
@@ -150,7 +150,7 @@ describe Tcx::File do
           let(:track) { lap.tracks.first }
 
           it 'has the correct properties' do
-            expect(track).to be_a Tcx::Track
+            expect(track).to be_a Tcx::Types::Track
             expect(track.trackpoints.count).to eq 78
           end
 
@@ -158,7 +158,7 @@ describe Tcx::File do
             let(:trackpoint) { track.trackpoints.first }
 
             it 'has the correct properties' do
-              expect(trackpoint).to be_a Tcx::Trackpoint
+              expect(trackpoint).to be_a Tcx::Types::Trackpoint
               expect(trackpoint.time).to eq Time.parse('2014-12-26 10:00:39 +0000')
               expect(trackpoint.altitude_meters).to eq 279.0
               expect(trackpoint.distance_meters).to eq 0.0
@@ -173,7 +173,7 @@ describe Tcx::File do
               let(:position) { trackpoint.position }
 
               it 'has the correct properties' do
-                expect(position).to be_a Tcx::Position
+                expect(position).to be_a Tcx::Types::Position
                 expect(position.latitude_degrees).to eq 46.09344659373164
                 expect(position.longitude_degrees).to eq 14.678033776581287
               end
@@ -186,7 +186,7 @@ describe Tcx::File do
         let(:creator) { activity.creator }
 
         it 'has the correct properties' do
-          expect(creator).to be_a Tcx::AbstractSource
+          expect(creator).to be_a Tcx::Types::AbstractSource
           expect(creator.name).to eq 'Garmin Forerunner 910XT'
           expect(creator.product_id).to eq '1328'
           expect(creator.unit_id).to eq '3881644365'
@@ -196,7 +196,7 @@ describe Tcx::File do
           let(:version) { creator.version }
 
           it 'has the correct properties' do
-            expect(version).to be_a Tcx::Version
+            expect(version).to be_a Tcx::Types::Version
             expect(version.version_major).to eq 3
             expect(version.version_minor).to eq 0
             expect(version.build_major).to eq 0
@@ -232,16 +232,16 @@ describe Tcx::File do
         let(:lap) { course.laps.first }
 
         it 'is a lap' do
-          expect(lap).to be_a Tcx::CourseLap
+          expect(lap).to be_a Tcx::Types::CourseLap
           expect(lap.total_time_seconds).to eq(0.0)
           expect(lap.distance_meters).to eq(29_320.969880372675)
-          expect(lap.begin_position).to be_a Tcx::Position
+          expect(lap.begin_position).to be_a Tcx::Types::Position
           expect(lap.begin_position.latitude_degrees).to eq(40.75622691)
           expect(lap.begin_position.longitude_degrees).to eq(-73.9973099)
-          expect(lap.end_position).to be_a Tcx::Position
+          expect(lap.end_position).to be_a Tcx::Types::Position
           expect(lap.end_position.latitude_degrees).to eq(40.57761895)
           expect(lap.end_position.longitude_degrees).to eq(-73.9612219)
-          expect(lap.intensity).to eq(Tcx::Intensity.active)
+          expect(lap.intensity).to eq(Tcx::Types::Intensity.active)
         end
       end
 
@@ -249,7 +249,7 @@ describe Tcx::File do
         let(:track) { course.tracks.first }
 
         it 'is a track' do
-          expect(track).to be_a Tcx::Track
+          expect(track).to be_a Tcx::Types::Track
           expect(track.trackpoints.count).to eq 2402
         end
 
@@ -257,11 +257,11 @@ describe Tcx::File do
           let(:trackpoint) { track.trackpoints.first }
 
           it 'is a trackpoint' do
-            expect(trackpoint).to be_a Tcx::Trackpoint
+            expect(trackpoint).to be_a Tcx::Types::Trackpoint
             expect(trackpoint.time).to eq Time.parse('2025-10-24T17:59:04Z')
             expect(trackpoint.position.latitude_degrees).to eq 40.75622691
             expect(trackpoint.position.longitude_degrees).to eq(-73.9973099)
-            expect(trackpoint.position).to be_a Tcx::Position
+            expect(trackpoint.position).to be_a Tcx::Types::Position
             expect(trackpoint.altitude_meters).to eq 15.0
             expect(trackpoint.distance_meters).to eq 0.0
           end
@@ -295,12 +295,12 @@ describe Tcx::File do
         let(:step) { workout.steps.first }
 
         it 'is a lap' do
-          expect(step).to be_a Tcx::Step
+          expect(step).to be_a Tcx::Types::Step
           expect(step.step_id).to eq '1'
           expect(step.name).to eq 'Warm Up'
           expect(step.duration.seconds).to eq 300
           expect(step.intensity).to eq 'Resting'
-          expect(step.target).to be_a Tcx::None
+          expect(step.target).to be_a Tcx::Types::None
         end
       end
     end

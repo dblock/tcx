@@ -23,7 +23,7 @@ module Tcx
   #   file.database.activities = [...]
   #   file.dump('/path/to/output.tcx')
   #
-  # @see Database
+  # @see Types::Database
   # @see Tcx.load_file
   class File
     extend Forwardable
@@ -42,22 +42,22 @@ module Tcx
     end
 
     # Get the underlying Database object, loading from file if necessary
-    # @return [Database] the parsed or empty database
+    # @return [Types::Database] the parsed or empty database
     def database
       @database ||= if file_path
                       ::File.open(file_path) do |file|
                         xml = Nokogiri::XML(file)
-                        Tcx::Database.parse(xml.root)
+                        Tcx::Types::Database.parse(xml.root)
                       end
                     else
-                      Tcx::Database.new
+                      Tcx::Types::Database.new
                     end
     end
 
     # Dump the database to an XML file
     # @param target_path [String, nil] path to write file, or nil to use original file_path
     # @return [void]
-    # @see Database#dump
+    # @see Types::Database#dump
     def dump(target_path = nil)
       database.dump(target_path)
     end

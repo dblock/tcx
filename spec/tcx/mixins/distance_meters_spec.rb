@@ -2,8 +2,8 @@
 
 require 'spec_helper'
 
-describe Tcx::DistanceMeters do
-  let(:file_path) { File.join(File.dirname(__FILE__), '../data/running/running_activity_1.tcx') }
+describe Tcx::Mixins::DistanceMeters do
+  let(:file_path) { File.join(File.dirname(__FILE__), '../../data/running/running_activity_1.tcx') }
   let(:tcx) { Tcx.load_file(file_path) }
   let(:activity) { tcx.activities.first }
   let(:lap) { activity.laps.first }
@@ -181,7 +181,7 @@ describe Tcx::DistanceMeters do
   end
 
   describe 'CourseLap' do
-    let(:course_file_path) { File.join(File.dirname(__FILE__), '../data/courses/brighton-beach.tcx') }
+    let(:course_file_path) { File.join(File.dirname(__FILE__), '../../data/courses/brighton-beach.tcx') }
     let(:course_tcx) { Tcx.load_file(course_file_path) }
     let(:course) { course_tcx.courses.first }
     let(:course_lap) { course.laps.first }
@@ -209,8 +209,8 @@ describe Tcx::DistanceMeters do
   end
 
   describe 'edge cases' do
-    let(:zero_distance_lap) { Tcx::Lap.new('DistanceMeters' => 0) }
-    let(:negative_distance_lap) { Tcx::Lap.new('DistanceMeters' => -100) }
+    let(:zero_distance_lap) { Tcx::Types::Lap.new('DistanceMeters' => 0) }
+    let(:negative_distance_lap) { Tcx::Types::Lap.new('DistanceMeters' => -100) }
 
     describe 'with zero distance' do
       it 'returns nil for formatted strings' do
@@ -250,7 +250,7 @@ describe Tcx::DistanceMeters do
   end
 
   describe 'conversion accuracy' do
-    let(:exact_km_lap) { Tcx::Lap.new('DistanceMeters' => 5000) }
+    let(:exact_km_lap) { Tcx::Types::Lap.new('DistanceMeters' => 5000) }
 
     it 'converts 5000m to 5km exactly' do
       expect(exact_km_lap.distance_kilometers).to eq(5.0)
