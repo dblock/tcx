@@ -3,11 +3,10 @@
 module Tcx
   class Week < Base
     property 'notes', from: 'Notes'
+    property 'start_day', from: 'StartDay', transform_with: ->(v) { Date.parse(v) }
 
     def self.attributes
       %w[start_day]
     end
-
-    property 'start_day', from: 'StartDay', transform_with: ->(v) { Date.parse(v) }
   end
 end

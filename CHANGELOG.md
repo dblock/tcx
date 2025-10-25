@@ -1,11 +1,10 @@
-### 0.3.0 (Next)
+### 0.3.0 (2025-10-24)
 
 * Added reading and writing multisport activity folders - [@dblock](https://github.com/dblock).
 * Added reading and writing workouts - [@dblock](https://github.com/dblock).
 * Write required namespaces dynamically - [@dblock](https://github.com/dblock).
 * Added reading and writing courses - [@dblock](https://github.com/dblock).
 * Added writing multiple extension attributes - [@dblock](https://github.com/dblock).
-* Your contribution here.
 
 ### 0.2.0 (2025-10-24)
 
