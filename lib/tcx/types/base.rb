@@ -123,6 +123,8 @@ module Tcx
 
     def build_value(value)
       case value
+      when Nokogiri::XML::Element
+        # empty node
       when ::Time
         value.iso8601
       else

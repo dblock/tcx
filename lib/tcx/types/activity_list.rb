@@ -3,11 +3,15 @@
 module Tcx
   class ActivityList < Base
     property 'activities', from: 'Activities', transform_with: ->(v) { v.map { |el| Activity.parse(el) } }
+    property 'multisport_sessions', from: 'MultisportSession', transform_with: ->(v) { v.map { |el| MultisportSession.parse(el) } }
 
     def_delegators :activities, :each, :count
 
     def self.parse(list)
-      ActivityList.new('Activities' => list.xpath('xmlns:Activity'))
+      ActivityList.new(
+        'Activities' => list.xpath('xmlns:Activity'),
+        'MultisportSession' => list.xpath('xmlns:MultiSportSession')
+      )
     end
 
     def build_xml(builder, namespace = nil)

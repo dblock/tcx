@@ -3,20 +3,12 @@
 module Tcx
   class WorkoutFolder < Base
     property 'name', from: 'Name'
-    property 'folders', from: 'Folders', transform_with: ->(v) { v.map { |el| WorkoutFolder.parse(el) } }
-    property 'workout_name_ref', from: 'WorkoutNameRef', transform_with: ->(v) { NameKeyReference.parse(v) }
+    property 'folders', from: 'Folder', transform_with: ->(v) { to_array(v).map { |el| WorkoutFolder.parse(el) } }
+    property 'workout_name_ref', from: 'WorkoutNameRef', transform_with: ->(v) { to_array(v).map { |el| NameKeyReference.parse(el) } }
     property 'extensions', from: 'Extensions', transform_with: ->(v) { ExtensionsList.parse(v) }
 
-    def self.parse(list)
-      WorkoutFolder.new('Folders' => list.xpath('xmlns:Folder'))
-    end
-
-    def build_xml(builder, namespace = nil)
-      courses.each do |course|
-        builder.Course(course.attributes) do |course_builder|
-          course.build_xml(course_builder, namespace)
-        end
-      end
+    def self.attributes
+      ['name']
     end
   end
 end
