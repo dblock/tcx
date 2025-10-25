@@ -1,9 +1,3 @@
-inherit_from: .rubocop_todo.yml
-
-require:
-  - rubocop-rake
-  - rubocop-rspec
-
 AllCops:
   TargetRubyVersion: 3.0
   NewCops: enable
@@ -33,3 +27,13 @@ RSpec/MultipleMemoizedHelpers:
 
 RSpec/ContextWording:
   Enabled: false
+
+RSpec/MessageSpies:
+  EnforcedStyle: receive
+
+inherit_from: .rubocop_todo.yml
+
+require:
+  - rubocop-rake
+  - rubocop-rspec
+

@@ -51,7 +51,7 @@ tcx.dump('activities2.tcx') # writes to activities2.tcx
 
 ### Examples
 
-See [examples/multiple_running_activities.rb](examples/multiple_running_activities.rb) for a complete working example.
+See [examples](examples) for a complete set of working samples.
 
 ## Upgrading
 

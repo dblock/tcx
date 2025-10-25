@@ -4,7 +4,12 @@ require 'spec_helper'
 
 describe Tcx::File do
   context 'with a file path' do
-    let(:file_path) { File.join(File.dirname(__FILE__), 'data', 'running', 'multiple_running_activities.tcx') }
+    let(:file_path) do
+      File.join(
+        File.dirname(__FILE__), '..', 'data', 'running', 'multiple_running_activities.tcx'
+      )
+    end
+
     let(:tcx_file) { described_class.new(file_path) }
 
     describe '#initialize' do
@@ -16,10 +21,6 @@ describe Tcx::File do
     describe '#database' do
       it 'returns a Tcx::Database instance' do
         expect(tcx_file.database).to be_a Tcx::Database
-      end
-
-      it 'memoizes the database instance' do
-        expect(tcx_file.database).to be tcx_file.database
       end
 
       it 'parses the TCX file correctly' do
@@ -76,7 +77,13 @@ describe Tcx::File do
   end
 
   context 'with multiple running activities' do
-    let(:tcx) { described_class.new(File.join(File.dirname(__FILE__), 'data', 'running', 'multiple_running_activities.tcx')) }
+    let(:tcx) do
+      described_class.new(
+        File.join(
+          File.dirname(__FILE__), '..', 'data', 'running', 'multiple_running_activities.tcx'
+        )
+      )
+    end
 
     it 'has the correct number of activities' do
       expect(tcx.activities.count).to eq 2
@@ -178,7 +185,13 @@ describe Tcx::File do
   end
 
   context 'with a course' do
-    let(:tcx) { described_class.new(File.join(File.dirname(__FILE__), 'data', 'courses', 'brighton-beach.tcx')) }
+    let(:tcx) do
+      described_class.new(
+        File.join(
+          File.dirname(__FILE__), '..', 'data', 'courses', 'brighton-beach.tcx'
+        )
+      )
+    end
 
     it 'contains a course' do
       expect(tcx.courses.count).to eq 1

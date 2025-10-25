@@ -1,5 +1,6 @@
 ### 0.3.0 (Next)
 
+* Write required namespaces dynamically - [@dblock](https://github.com/dblock).
 * Fixed reading and writing courses - [@dblock](https://github.com/dblock).
 * Fixed writing multiple extension attributes - [@dblock](https://github.com/dblock).
 * Your contribution here.
