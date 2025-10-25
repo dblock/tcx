@@ -24,7 +24,7 @@ describe Tcx do
           end
 
           it 'writes an identical file' do
-            expect(File.read(tcx_file)).to eq File.read(temp_file)
+            expect(File.read(temp_file)).to eq File.read(tcx_file)
           end
         end
       end

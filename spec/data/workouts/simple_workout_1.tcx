@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TrainingCenterDatabase xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.garmin.com/xmlschemas/TrainingCenterDatabase/v2" xsi:schemaLocation="http://www.garmin.com/xmlschemas/TrainingCenterDatabase/v2">
+  <Workouts>
+    <Workout Sport="Running">
+      <Name>Run Mon 11/11</Name>
+      <Step>
+        <StepId>1</StepId>
+        <Name>Warm Up</Name>
+        <Duration xsi:type="Time_t">
+          <Seconds>300</Seconds>
+        </Duration>
+        <Intensity>Resting</Intensity>
+        <Target xsi:type="None_t"/>
+      </Step>
+      <Step>
+        <StepId>2</StepId>
+        <Name>Zone 2 Run</Name>
+        <Duration xsi:type="Time_t">
+          <Seconds>1800</Seconds>
+        </Duration>
+        <Intensity>Active</Intensity>
+        <Target xsi:type="None_t"/>
+      </Step>
+      <Step>
+        <StepId>3</StepId>
+        <Name>Cool Down</Name>
+        <Duration xsi:type="Time_t">
+          <Seconds>300</Seconds>
+        </Duration>
+        <Intensity>Resting</Intensity>
+        <Target xsi:type="None_t"/>
+      </Step>
+      <Notes>5 min walk warm-up, 30 min Zone 2, 5 min walk cool-down, Distance: ~2.4 miles, Focus: Form maintenance at lower HR than last week.</Notes>
+    </Workout>
+  </Workouts>
+</TrainingCenterDatabase>

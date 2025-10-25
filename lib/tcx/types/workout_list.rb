@@ -12,7 +12,7 @@ module Tcx
 
     def build_xml(builder, namespace = nil)
       workouts.each do |workout|
-        builder.Workout do |workout_builder|
+        builder.Workout(workout.attributes) do |workout_builder|
           workout.build_xml(workout_builder, namespace)
         end
       end

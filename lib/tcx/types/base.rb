@@ -123,7 +123,7 @@ module Tcx
 
     def build_value(value)
       case value
-      when Time
+      when ::Time
         value.iso8601
       else
         value

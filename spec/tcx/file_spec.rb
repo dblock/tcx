@@ -250,4 +250,44 @@ describe Tcx::File do
       end
     end
   end
+
+  context 'with a workout' do
+    let(:tcx) do
+      described_class.new(
+        File.join(
+          File.dirname(__FILE__), '..', 'data', 'workouts', 'simple_workout_1.tcx'
+        )
+      )
+    end
+
+    it 'contains a workout' do
+      expect(tcx.workouts.count).to eq 1
+    end
+
+    context 'the workout' do
+      let(:workout) { tcx.workouts.first }
+
+      it 'has the correct properties' do
+        expect(workout.name).to eq 'Run Mon 11/11'
+        expect(workout.sport).to eq 'Running'
+        expect(workout.steps.count).to eq 3
+        expect(workout.creator).to be_nil
+        expect(workout.notes).to start_with '5 min walk warm-up'
+        expect(workout.extensions).to be_nil
+      end
+
+      context 'first step' do
+        let(:step) { workout.steps.first }
+
+        it 'is a lap' do
+          expect(step).to be_a Tcx::Step
+          expect(step.step_id).to eq '1'
+          expect(step.name).to eq 'Warm Up'
+          expect(step.duration.seconds).to eq 300
+          expect(step.intensity).to eq 'Resting'
+          expect(step.target).to be_a Tcx::None
+        end
+      end
+    end
+  end
 end

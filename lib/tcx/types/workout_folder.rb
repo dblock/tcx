@@ -13,7 +13,7 @@ module Tcx
 
     def build_xml(builder, namespace = nil)
       courses.each do |course|
-        builder.Course do |course_builder|
+        builder.Course(course.attributes) do |course_builder|
           course.build_xml(course_builder, namespace)
         end
       end

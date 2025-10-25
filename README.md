@@ -3,7 +3,9 @@
 [![Gem Version](https://badge.fury.io/rb/tcx.svg)](https://badge.fury.io/rb/tcx)
 [![Test](https://github.com/dblock/tcx/actions/workflows/test.yml/badge.svg?branch=master)](https://github.com/dblock/tcx/actions/workflows/test.yml)
 
-A Garmin Training Center XML (TCX) reader and writer. Unlike other libraries such as [tcx_rb](https://github.com/keithdoggett/tcx_rb) or [tcxread](https://github.com/firefly-cpp/tcxread), provides a consistent API by implementing the complete read/write [TCX schema](https://www8.garmin.com/xmlschemas/TrainingCenterDatabasev2.xsd) with extensions in a structured and organized way.
+A Garmin Training Center XML (.TCX) reader and writer.
+
+Unlike other libraries such as [tcx_rb](https://github.com/keithdoggett/tcx_rb) or [tcxread](https://github.com/firefly-cpp/tcxread), provides a more idiomatic API, implements both read and write, and supports the entire [TCX schema](https://www8.garmin.com/xmlschemas/TrainingCenterDatabasev2.xsd), including extensions.
 
 ## Installation
 

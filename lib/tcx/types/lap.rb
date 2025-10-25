@@ -2,7 +2,7 @@
 
 module Tcx
   class Lap < Base
-    property 'start_time', from: 'StartTime', transform_with: ->(v) { Time.parse(v) }
+    property 'start_time', from: 'StartTime', transform_with: ->(v) { ::Time.parse(v) }
     property 'total_time_seconds', from: 'TotalTimeSeconds', transform_with: lambda(&:to_f)
     property 'distance_meters', from: 'DistanceMeters', transform_with: lambda(&:to_f)
     property 'maximum_speed', from: 'MaximumSpeed', transform_with: lambda(&:to_f)
