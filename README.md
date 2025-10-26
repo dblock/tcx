@@ -230,15 +230,15 @@ lap.pace_per_100_yards_s                # => "0m26s/100yd"
 
 See [examples](examples) for a complete set of runnable examples:
 
-- **[quick_start.rb](examples/quick_start.rb)** - Basic usage: loading files and accessing activities
-- **[working_with_activities.rb](examples/working_with_activities.rb)** - Detailed activity analysis with GPS data and extensions
-- **[working_with_workouts.rb](examples/working_with_workouts.rb)** - Structured workout plans with steps and targets
-- **[working_with_courses.rb](examples/working_with_courses.rb)** - Course routes with waypoints and GPS tracks
-- **[parsing_xml_data.rb](examples/parsing_xml_data.rb)** - In-memory XML parsing and modification
-- **[creating_new_files.rb](examples/creating_new_files.rb)** - Creating new TCX files from templates
-- **[multiple_running_activities.rb](examples/multiple_running_activities.rb)** - Working with multiple activities
-- **[brighton_beach_course.rb](examples/brighton_beach_course.rb)** - Course analysis example
-- **[dump_and_diff.rb](bin/dump_and_diff.rb)** - Round-trip XML verification utility
+- [quick_start.rb](examples/quick_start.rb) - Basic usage: loading files and accessing activities
+- [working_with_activities.rb](examples/working_with_activities.rb) - Detailed activity analysis with GPS data and extensions
+- [working_with_workouts.rb](examples/working_with_workouts.rb) - Structured workout plans with steps and targets
+- [working_with_courses.rb](examples/working_with_courses.rb) - Course routes with waypoints and GPS tracks
+- [parsing_xml_data.rb](examples/parsing_xml_data.rb) - In-memory XML parsing and modification
+- [creating_new_files.rb](examples/creating_new_files.rb) - Creating new TCX files from templates
+- [multiple_running_activities.rb](examples/multiple_running_activities.rb) - Working with multiple activities
+- [brighton_beach_course.rb](examples/brighton_beach_course.rb) - Course analysis example
+- [dump_and_diff.rb](bin/dump_and_diff.rb) - Round-trip XML verification utility
 
 Run any example with:
 
@@ -246,7 +246,7 @@ Run any example with:
 bundle exec ruby examples/quick_start.rb
 ```
 
-Run the [dump_and_diff](bin/dump_and_diff.rb) utility with:
+The [dump_and_diff](bin/dump_and_diff.rb) utility makes it easy to debug read/write differences. Run it with:
 
 ```bash
 bundle exec ruby bin/dump_and_diff.rb path/to/activity.tcx
